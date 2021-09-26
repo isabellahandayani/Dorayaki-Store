@@ -1,0 +1,63 @@
+.color-blue {
+    color: #01A8D9
+}
+
+.color-salmon {
+    color: #F39A64
+}
+
+.color-dark-red {
+    color: #BA3C16
+}
+
+.color-white {
+    color: #FFFFFF
+}
+
+.color-yellow {
+    color: #F19100
+}
+
+.color-blue {
+    color: #01A8D9
+}
+
+.bg-salmon {
+    background-color: #F39A64
+}
+
+.bg-dark-red {
+    background-color: #BA3C16
+}
+
+.bg-white {
+    background-color: #FFFFFF
+}
+
+.bg-yellow {
+    background-color: #F19100
+}
+
+.heading-1 {
+    font-size: 144px;
+    font-weight: 700;
+}
+
+.heading-2 {
+    font-size: 96px;
+    font-weight: 700;
+}
+
+.heading-3 {
+    font-size: 72px;
+    font-weight: 700;
+}
+
+.heading-4 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.body {
+    font-size: 36px;
+}
