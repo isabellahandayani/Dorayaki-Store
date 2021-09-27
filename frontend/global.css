@@ -58,6 +58,12 @@
     font-weight: 700;
 }
 
-.body {
+.body-1 {
     font-size: 36px;
+    font-weight: 400;
+}
+
+.body-1 {
+    font-size: 28px;
+    font-weight: 400;
 }
