@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+html, body {
+    font-family: 'Josefin Sans';
+}
+
 .color-blue {
     color: #01A8D9
 }
@@ -38,22 +44,22 @@
     background-color: #F19100
 }
 
-.heading-1 {
+.heading-1, h1 {
     font-size: 144px;
     font-weight: 700;
 }
 
-.heading-2 {
+.heading-2, h2 {
     font-size: 96px;
     font-weight: 700;
 }
 
-.heading-3 {
+.heading-3, h3 {
     font-size: 72px;
     font-weight: 700;
 }
 
-.heading-4 {
+.heading-4, h4 {
     font-size: 48px;
     font-weight: 700;
 }
@@ -63,7 +69,7 @@
     font-weight: 400;
 }
 
-.body-1 {
+.body-2 {
     font-size: 28px;
     font-weight: 400;
 }
