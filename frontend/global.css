@@ -1,75 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 
-html, body {
-    font-family: 'Josefin Sans';
+html,
+body {
+  font-family: 'Josefin Sans';
+  margin: 0px;
 }
 
 .color-blue {
-    color: #01A8D9
+  color: #01a8d9;
 }
 
 .color-salmon {
-    color: #F39A64
+  color: #f39a64;
 }
 
 .color-dark-red {
-    color: #BA3C16
+  color: #ba3c16;
 }
 
 .color-white {
-    color: #FFFFFF
+  color: #ffffff;
 }
 
 .color-yellow {
-    color: #F19100
+  color: #f19100;
 }
 
-.color-blue {
-    color: #01A8D9
+.bg-blue {
+  background-color: #01a8d9;
 }
 
 .bg-salmon {
-    background-color: #F39A64
+  background-color: #f39a64;
 }
 
 .bg-dark-red {
-    background-color: #BA3C16
+  background-color: #ba3c16;
 }
 
 .bg-white {
-    background-color: #FFFFFF
+  background-color: #ffffff;
 }
 
 .bg-yellow {
-    background-color: #F19100
+  background-color: #f19100;
 }
 
-.heading-1, h1 {
-    font-size: 144px;
-    font-weight: 700;
+.heading-1,
+h1 {
+  font-size: 144px;
+  font-weight: 700;
 }
 
-.heading-2, h2 {
-    font-size: 96px;
-    font-weight: 700;
+.heading-2,
+h2 {
+  font-size: 96px;
+  font-weight: 700;
 }
 
-.heading-3, h3 {
-    font-size: 72px;
-    font-weight: 700;
+.heading-3,
+h3 {
+  font-size: 72px;
+  font-weight: 700;
 }
 
-.heading-4, h4 {
-    font-size: 48px;
-    font-weight: 700;
+.heading-4,
+h4 {
+  font-size: 48px;
+  font-weight: 700;
 }
 
 .body-1 {
-    font-size: 36px;
-    font-weight: 400;
+  font-size: 36px;
+  font-weight: 400;
 }
 
 .body-2 {
-    font-size: 28px;
-    font-weight: 400;
+  font-size: 28px;
+  font-weight: 400;
 }
