@@ -49,9 +49,14 @@
 .bill {
   border-radius: 20px;
   flex: 1;
-  overflow: scroll;
+  overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.bill::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 .bill p {
@@ -102,4 +107,18 @@ hr {
 
 .update-box i {
   cursor: pointer;
+}
+
+@media (max-width: 768px){
+  .container {
+    display: block;
+  }
+
+  .transaction {
+    margin: 0;
+  }
+
+  .modal-content {
+    max-width: 40%;
+  }
 }

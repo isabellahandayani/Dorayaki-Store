@@ -5,6 +5,7 @@ var close = document.getElementById("close-btn");
 var btns = document.getElementsByClassName("edit-btn");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function () {
+    document.getElementById("amount").innerText = 1;
     modal.style.display = "block";
   });
 }
