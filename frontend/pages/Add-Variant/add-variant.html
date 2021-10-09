@@ -46,20 +46,36 @@
       </div>
 
       <!-- Main -->
-      <div class="content">
-        <!-- Description Box -->
-        <div class="box bg-blue desc">
-          <form action="">
+      <form action="" method="post" enctype="multipart/form-data">
+          <!-- Description Box -->
+          <div class="box bg-blue desc">
             <label class="color-white body-2" for="nama">Nama</label>
-            <input class="body-2" type="text" id="nama" name="nama" />
+            <input 
+              class="body-2" 
+              type="text" 
+              id="nama" 
+              name="nama" 
+              required/>
             <div class="price-stock">
               <div class="price">
                 <label class="color-white body-2" for="harga">Harga</label>
-                <input class="body-2" type="text" id="harga" name="harga" />
+                <input 
+                  class="body-2" 
+                  type="number" 
+                  id="harga" 
+                  name="harga" 
+                  min="0"
+                  required/>
               </div>
               <div class="stock">
                 <label class="color-white body-2" for="stok">Stok Awal</label>
-                <input class="body-2" type="text" id="stok" name="stok" />
+                <input 
+                  class="body-2" 
+                  type="number" 
+                  id="stok" 
+                  name="stok" 
+                  min="0" 
+                  required/>
               </div>
             </div>
             <label class="color-white body-2" for="desc">Deskripsi</label>
@@ -70,25 +86,26 @@
               rows="2"
               id="desc"
               name="desc"
+              required
             ></textarea>
-          </form>
-        </div>
-
-        <!-- Add Image + Submit Button -->
-        <div class="add-image">
-          <!-- Image -->
-          <div class="box bg-blue image">
-            <p class="body-2 color-white">Tambah Gambar</p>
-            <i class="fa fa-plus-circle color-white" aria-hidden="true"></i>
-          </div>
-          <!-- Button -->
-          <input
-            class="box bg-dark-red color-white button body-2"
-            type="button"
-            value="Tambah"
-          />
-        </div>
-      </div>
+            <div class="add-item">
+              <label class="color-white body-2 image" for="image">Tambah Gambar
+              </label>
+                <p id="file-name"></p>
+                <input
+                class="color-white"
+                id="image"
+                type="file"
+                name="image"
+                accept="image/jpeg, image/png, image/jpg"
+                required
+                />
+              <button class="bg-dark-red color-white">Tambah</button>
+              <div style="clear:both"></div>
+            </div>
+      </form>
     </div>
+
+    <script src="add-variant.js"></script>
   </body>
 </html>

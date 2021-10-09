@@ -54,7 +54,8 @@
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
-.bill::-webkit-scrollbar { /* WebKit */
+.bill::-webkit-scrollbar {
+  /* WebKit */
   width: 0;
   height: 0;
 }
@@ -109,7 +110,7 @@ hr {
   cursor: pointer;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .container {
     display: block;
   }
