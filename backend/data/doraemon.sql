@@ -1,0 +1,26 @@
+--
+-- File generated with SQLiteStudio v3.3.3 on Sat Oct 9 16:14:22 2021
+--
+-- Text encoding used: System
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table: dorayaki
+DROP TABLE IF EXISTS dorayaki;
+CREATE TABLE dorayaki (id_dorayaki INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, dorayaki_name VARCHAR (255) NOT NULL, stock INTEGER DEFAULT (0) NOT NULL, sold_stock INTEGER DEFAULT (0) NOT NULL, price INTEGER DEFAULT (0) NOT NULL, "desc" VARCHAR (255) NOT NULL DEFAULT "");
+
+-- Table: order
+DROP TABLE IF EXISTS "order";
+CREATE TABLE "order" (id_order INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT NOT NULL, time DATETIME NOT NULL DEFAULT (DATE()), id_user INT REFERENCES user (id_user) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL);
+
+-- Table: order_item
+DROP TABLE IF EXISTS order_item;
+CREATE TABLE order_item (id_order INT REFERENCES "order" (id_order) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL, id_dorayaki INT REFERENCES dorayaki (id_dorayaki) ON DELETE CASCADE ON UPDATE CASCADE, qty INT DEFAULT (0) NOT NULL, PRIMARY KEY (id_order ASC, id_dorayaki));
+
+-- Table: user
+DROP TABLE IF EXISTS user;
+CREATE TABLE user (id_user INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, email VARCHAR (127) UNIQUE NOT NULL, password VARCHAR (255) NOT NULL, username VARCHAR (127) UNIQUE NOT NULL, is_admin INTEGER NOT NULL DEFAULT (0));
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;
