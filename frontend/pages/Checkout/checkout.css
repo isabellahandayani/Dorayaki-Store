@@ -20,9 +20,9 @@
 
 .item img {
   float: left;
-  max-width: 100%;
+  object-fit: fill;
   max-height: 100%;
-  object-fit: contain;
+  width: 150px;
   border-radius: 20px 0 0 20px;
   margin-right: 20px;
 }
@@ -86,7 +86,7 @@ hr {
 }
 
 .modal-content {
-  max-width: 25%;
+  max-width: 20%;
   margin: auto;
   border-radius: 25px;
   text-align: center;
@@ -104,6 +104,22 @@ hr {
 .update-box p {
   margin: 20px;
   display: inline;
+}
+
+.update-box {
+  padding-bottom: 40px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .update-box i {

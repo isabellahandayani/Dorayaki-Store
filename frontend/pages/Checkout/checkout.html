@@ -40,85 +40,21 @@
     </div>
     <div class="container">
       <div class="content">
-        <div class="item bg-blue">
-          <img
-            src="https://awsimages.detik.net.id/community/media/visual/2020/09/23/jajanan-jepang-manis-1.jpeg?w=700&q=90"
-            alt="Neko"
-          />
-          <div class="desc">
-            <button class="body-2 bg-yellow color-white edit-btn">Edit</button>
-            <p class="body-1 color-white">Dorayaki Kucing</p>
-            <p class="body-2 color-white">Rp100.000</p>
-          </div>
-        </div>
-        <div class="item bg-blue">
-          <img
-            src="https://awsimages.detik.net.id/community/media/visual/2020/09/23/jajanan-jepang-manis-1.jpeg?w=700&q=90"
-            alt="Neko"
-          />
-          <div class="desc">
-            <button class="body-2 bg-yellow color-white edit-btn">Edit</button>
-            <p class="body-1 color-white">Dorayaki Kucing</p>
-            <p class="body-2 color-white">Rp100.000</p>
-          </div>
-        </div>
-        <div class="item bg-blue">
-          <img
-            src="https://awsimages.detik.net.id/community/media/visual/2020/09/23/jajanan-jepang-manis-1.jpeg?w=700&q=90"
-            alt="Neko"
-          />
-          <div class="desc">
-            <button class="body-2 bg-yellow color-white edit-btn">Edit</button>
-            <p class="body-1 color-white">Dorayaki Kucing</p>
-            <p class="body-2 color-white">Rp100.000</p>
-          </div>
-        </div>
-        <div class="item bg-blue">
-          <img
-            src="https://awsimages.detik.net.id/community/media/visual/2020/09/23/jajanan-jepang-manis-1.jpeg?w=700&q=90"
-            alt="Neko"
-          />
-          <div class="desc">
-            <button class="body-2 bg-yellow color-white edit-btn">Edit</button>
-            <p class="body-1 color-white">Dorayaki Kucing</p>
-            <p class="body-2 color-white">Rp100.000</p>
-          </div>
-        </div>
+        <!-- User List of Dorayaki -->
       </div>
       <div class="transaction">
         <div class="bill bg-salmon">
           <p class="body-1 color-white">Total Harga</p>
-          <div class="bill-item">
-            <p class="body-2 color-white">Dorayaki Kucing</p>
-            <p class="body-2 color-white">Rp100.000</p>
-          </div>
-          <div class="bill-item">
-            <p class="body-2 color-white">Dorayaki Kucing</p>
-            <p class="body-2 color-white">Rp100.000</p>
-          </div>
-          <div class="bill-item">
-            <p class="body-2 color-white">Dorayaki Kucing</p>
-            <p class="body-2 color-white">Rp100.000</p>
-          </div>
+          <div class="list-item"></div>
           <hr class="color-white" />
-          <p class="body-2 color-white">Rp300.000</p>
+          <p class="body-2 color-white" id="total"></p>
         </div>
-        <button class="body-2 bg-dark-red color-white">Beli</button>
+        <button class="body-2 bg-dark-red color-white" id="submit">Beli</button>
       </div>
     </div>
 
     <div id="modal">
-      <div class="modal-content bg-blue">
-        <p class="body-1 color-white">Yakin?</p>
-        <div class="update-box">
-          <i class="fa fa-minus-circle color-white" id="decr"></i>
-          <p class="body-2 color-white" id="amount">1</p>
-          <i class="fa fa-plus-circle color-white" id="incr"></i>
-        </div>
-        <button class="body-2 bg-dark-red color-white" id="close-btn">
-          Edit
-        </button>
-      </div>
+      <!-- Edit Modal -->
     </div>
     <script src="checkout.js"></script>
   </body>
