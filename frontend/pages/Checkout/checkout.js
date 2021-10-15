@@ -209,6 +209,7 @@ const buyCallback = (data) => {
   `
     Buy Confirmation
   `;
+  console.log(data);
   let res = JSON.parse(data);
   if (res["success"]) {
     alert("Pembelian Berhasil");

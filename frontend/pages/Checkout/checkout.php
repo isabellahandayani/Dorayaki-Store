@@ -79,9 +79,19 @@ if ($_COOKIE['admin']) {
             order_item(id_order, id_dorayaki, qty) 
             VALUES ('$last_id', ?, ?);
             EOF;
+
+        // Update Sold Stock
+        $query_stock = <<<EOF
+            UPDATE dorayaki
+            SET sold_stock = sold_stock + ?
+            WHERE id_dorayaki = ?
+            EOF;
+
         $order_item = $db->prepare($query);
+        $sold_stock = $db->prepare($query_stock);
         foreach (json_decode($_COOKIE['order']) as $key => $value) {
             $order_item->execute(array($key, $value));
+            $sold_stock->execute(array($value, $key));
         }
         die(json_encode(array("success" => true)));
     }
