@@ -24,25 +24,72 @@ const editEvent = () => {
   for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", function () {
       modal.style.display = "block";
-      modal.innerHTML =
-        `
-      <div class="modal-content bg-blue">
-        <p class="body-1 color-white">Yakin?</p>
-        <div class="update-box">
-          <i class="fa fa-minus-circle color-white" id="decr"></i>
-          <p class="body-2 color-white ` +
-        this.id +
-        `" id="amount">1</p>
-          <i class="fa fa-plus-circle color-white" id="incr"></i>
-        </div>
-      </div>
-      `;
+      modal.innerHTML = templateModal(this.id);
 
       getItem("checkout.php?id=" + this.id.split("-").at(-1), amtCallback);
       editQuantity();
     });
   }
 };
+
+const templateModal = (id) => {
+  return (
+    `
+  <div class="modal-content bg-blue">
+    <p class="body-1 color-white">Yakin?</p>
+    <div class="update-box">
+      <i class="fa fa-minus-circle color-white" id="decr"></i>
+      <p class="body-2 color-white ` +
+    id +
+    `" id="amount">1</p>
+      <i class="fa fa-plus-circle color-white" id="incr"></i>
+    </div>
+  </div>
+  `
+  );
+};
+
+const templateItem = (photo, name, id, price) => {
+  return (
+    `
+  <img src="` +
+    photo +
+    `" alt="` +
+    name +
+    `"/>
+  <div class="desc">
+    <button class="body-2 bg-yellow color-white edit-btn" id="dor-` +
+    id +
+    `">Edit</button>
+    <p class="body-1 color-white">` +
+    name +
+    `</p>
+    <p class="body-2 color-white">` +
+    price +
+    `</p>
+  </div>
+
+  `
+  );
+};
+
+const templateBill = (name, id, qty, price) => {
+  return (
+    `
+  <p class="body-2 color-white">` +
+    name +
+    `</p>
+  <p class="body-2 color-white item-` +
+    id +
+    `">` +
+    qty +
+    `x` +
+    price +
+    `</p> 
+  `
+  );
+};
+
 
 const editQuantity = () => {
   ` 
@@ -126,44 +173,13 @@ const cartCallback = (data) => {
     item.classList.add("item", "bg-blue");
 
     // Add Cart Item
-    item.innerHTML =
-      `
-      <img src="` +
-      res[key]["photo"] +
-      `" alt="` +
-      res[key]["dorayaki_name"] +
-      `"/>
-      <div class="desc">
-      <button class="body-2 bg-yellow color-white edit-btn" id="dor-` +
-      key +
-      `">Edit</button>
-      <p class="body-1 color-white">` +
-      res[key]["dorayaki_name"] +
-      `</p>
-      <p class="body-2 color-white">` +
-      res[key]["price"] +
-      `</p>
-      </div>
-    
-      `;
-
-    // Add Bill Items
+    item.innerHTML = templateItem(res[key]['photo'], res[key]['dorayaki_name'], key, res[key]['price'])
     list.appendChild(item);
+    
+    // Add Bill Items
     let bill_item = document.createElement("div");
     bill_item.classList.add("bill-item");
-    bill_item.innerHTML =
-      `
-    <p class="body-2 color-white">` +
-      res[key]["dorayaki_name"] +
-      `</p>
-    <p class="body-2 color-white item-` +
-      key +
-      `">` +
-      res[key]["amt"] +
-      `x` +
-      res[key]["price"] +
-      `</p> 
-    `;
+    bill_item.innerHTML = templateBill(res[key]['dorayaki_name'], key, res[key]['qty'], res[key]['price'])
     bill.appendChild(bill_item);
   }
 
@@ -175,11 +191,11 @@ const updateCallback = (data) => {
     Update Number of Order
   `;
   let res = JSON.parse(data);
-
   let amount = document.getElementById("amount");
-  if (res["status"]) {
+  if (Number(res["stock"]) >= Number(res['amt'])) {
     amount.innerText = res["amt"];
-    let item = document.getElementsByClassName("item-" + res["id"])[0];
+    let item = document.getElementsByClassName("item-" + res["id_dorayaki"])[0];
+    console.log(res["price"]);
     item.innerHTML = res["amt"] + `x` + res["price"];
   } else {
     alert("Stok Tidak Cukup");
@@ -216,10 +232,10 @@ const buyCallback = (data) => {
   }
 };
 
-// Populate Cart Item
+// // Populate Cart Item
 getItem("checkout.php?getItem=true", cartCallback);
 
 // Short Polling for Price
 setInterval(function () {
   getItem("checkout.php?getTotal=true", totalCallback);
-}, 500);
+}, 50);
