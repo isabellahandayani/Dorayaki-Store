@@ -3,7 +3,11 @@
   margin: 20px auto 0 auto;
   display: flex;
   flex-direction: row;
-  height: 460px;
+}
+
+#update {
+  float: right;
+  margin-right: 15px;
 }
 
 /* Item */
@@ -39,7 +43,7 @@
 }
 
 /* Bill */
-.transaction {
+#transaction {
   flex: 0.5;
   margin-left: 20px;
   display: flex;
@@ -68,7 +72,7 @@ hr {
   margin: 0 20px;
 }
 
-.transaction button {
+#transaction button {
   margin-top: 20px;
   width: 100%;
 }
@@ -131,7 +135,7 @@ input[type="number"] {
     display: block;
   }
 
-  .transaction {
+  #transaction {
     margin: 0;
   }
 
