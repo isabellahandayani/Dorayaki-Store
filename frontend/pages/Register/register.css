@@ -1,0 +1,49 @@
+.body-center {
+  overflow: hidden;
+}
+
+.card {
+  background-color: #01A8D9;
+  color: white;
+  width: 640px;
+  height: 560px;
+  border-radius: 30px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.card form input {
+  margin: 0;
+  height: 40px;
+}
+
+.card form .body-1 {
+  margin: 0
+}
+
+.card form .button {
+  color: white;
+  padding: 8px 24px;
+  margin: 0;
+}
+
+.card form .input-container {
+  margin: 32px 0;
+}
+
+.card form .row {
+  display: flex;
+  align-items: center;
+}
+
+.card form .submit-button {
+  display: flex;
+  justify-content: center;
+}
+
+.card form .body-2 {
+  margin-left: 8px;
+}
