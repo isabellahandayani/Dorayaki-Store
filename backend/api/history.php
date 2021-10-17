@@ -1,7 +1,7 @@
 <?php
     // Dummy user id 
     $id_user = 1;
-    $db = new PDO('sqlite:../../../backend/data/dorayaki.db');
+    $db = new PDO('sqlite:../data/dorayaki.db');
 
 
     if(isset($_GET['getHistory']) && $_GET['getHistory']) {

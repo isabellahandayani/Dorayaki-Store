@@ -12,7 +12,7 @@ document.getElementById("submit").onclick = function (event) {
     Submit Order Event
   `;
   event.preventDefault();
-  postItem("checkout.php", confirmCallback, "buy=true");
+  postItem("../../../backend/api/checkout.php", confirmCallback, "buy=true");
 };
 
 document.getElementById("update").onclick = function (event) {
@@ -20,7 +20,7 @@ document.getElementById("update").onclick = function (event) {
     Update Stock Event
   `;
   event.preventDefault();
-  putItem("checkout.php", confirmCallback, "update=true");
+  putItem("../../../backend/api/checkout.php", confirmCallback, "update=true");
 };
 
 const editEvent = () => {
@@ -35,7 +35,7 @@ const editEvent = () => {
       modal.style.display = "block";
       modal.innerHTML = templateModal(this.id);
 
-      getItem("checkout.php?id=" + this.id.split("-").at(-1), amtCallback);
+      getItem("../../../backend/api/checkout.php?id=" + this.id.split("-").at(-1), amtCallback);
       editButtons();
     });
   }
@@ -110,7 +110,7 @@ const editButtons = () => {
       let amount = parseInt(document.getElementById("amount").innerText);
       amount++;
       getItem(
-        "checkout.php?id=" + id.split("-").at(-1) + "&amt=" + amount,
+        "../../../backend/api/checkout.php?id=" + id.split("-").at(-1) + "&amt=" + amount,
         updateCallback
       );
     },
@@ -125,7 +125,7 @@ const editButtons = () => {
       amount--;
       amount = amount >= 1 ? amount : 1;
       getItem(
-        "checkout.php?id=" + id.split("-").at(-1) + "&amt=" + amount,
+        "../../../backend/api/checkout.php?id=" + id.split("-").at(-1) + "&amt=" + amount,
         updateCallback
       );
     },
@@ -297,12 +297,12 @@ const checkAdmin = (data) => {
   } else {
     // Short Polling for Price
     setInterval(function () {
-      getItem("checkout.php?getTotal=true", totalCallback);
+      getItem("../../../backend/api/checkout.php?getTotal=true", totalCallback);
     }, 50);
     update_btn.style.display = "none";
   }
   // Populate Cart Item
-  getItem("checkout.php?getItem=true", cartCallback);
+  getItem("../../../backend/api/checkout.php?getItem=true", cartCallback);
 };
 
-postItem("checkout.php", checkAdmin, "checkAdmin=true");
+postItem("../../../backend/api/checkout.php", checkAdmin, "checkAdmin=true");

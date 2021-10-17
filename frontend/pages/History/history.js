@@ -42,4 +42,4 @@ const historyCallback = (data) => {
   }
 };
 
-getHistory("history.php?getHistory=true", historyCallback);
+getHistory("../../../backend/api/history.php?getHistory=true", historyCallback);

@@ -1,5 +1,5 @@
 <?php
-$db = new PDO('sqlite:../../../backend/data/dorayaki.db');
+$db = new PDO('sqlite:../data/dorayaki.db');
 
 function getDorayaki($id)
 {
