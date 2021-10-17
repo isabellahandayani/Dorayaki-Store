@@ -1,0 +1,145 @@
+.container {
+  max-width: 95%;
+  margin: 20px auto 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+#update {
+  float: right;
+  margin-right: 15px;
+}
+
+/* Item */
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.item {
+  border-radius: 20px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.item img {
+  float: left;
+  object-fit: fill;
+  max-height: 100%;
+  width: 150px;
+  border-radius: 20px 0 0 20px;
+  margin-right: 20px;
+}
+
+.item .body-1,
+.item .body-2 {
+  margin: 0;
+  padding-top: 10px;
+}
+
+.item button {
+  float: right;
+  margin: 20px !important;
+}
+
+/* Bill */
+#transaction {
+  flex: 0.5;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bill {
+  border-radius: 20px;
+  flex: 1;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.bill::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.bill p {
+  margin: 20px;
+}
+
+hr {
+  margin: 0 20px;
+}
+
+#transaction button {
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Modal */
+#modal {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  padding-top: 120px;
+  display: none;
+}
+
+.modal-content {
+  max-width: 20%;
+  margin: auto;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.modal-content p {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  margin: 20px;
+}
+
+.update-box p {
+  margin: 20px;
+  display: inline;
+}
+
+.update-box {
+  padding-bottom: 40px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.update-box i {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: block;
+  }
+
+  #transaction {
+    margin: 0;
+  }
+
+  .modal-content {
+    max-width: 40%;
+  }
+}

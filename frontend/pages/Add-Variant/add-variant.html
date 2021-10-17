@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add Variant</title>
+    <link rel="stylesheet" href="../../global.css" />
+    <link rel="stylesheet" href="./add-variant.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="navbar color-white bg-blue body-1">
+      <div class="title">
+        <span class="heading-3">S</span>
+        tand
+        <span class="heading-3">B</span>
+        y
+        <span class="heading-3">D</span>
+        orayaki
+      </div>
+      <div class="menu">
+        <button class="bg-dark-red color-white">Logout</button>
+        <div style="width: 20px"></div>
+
+        <div>Dora</div>
+        <div style="width: 20px"></div>
+
+        <img src="../../assets/icons/akar-icons_cart.svg" />
+        <div style="width: 20px"></div>
+
+        <div class="bg-white search-bar">
+          <img src="../../assets/icons/bi_search.svg" />
+          <div style="width: 10px"></div>
+          <input />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Title -->
+      <div class="box bg-yellow header">
+        <p class="body-1 color-white">Add Variant Dorayaki</p>
+      </div>
+
+      <!-- Main -->
+      <form action="add-variant.php" method="post" enctype="multipart/form-data">
+          <!-- Description Box -->
+          <div class="box bg-blue desc">
+            <label class="color-white body-2" for="nama">Nama</label>
+            <input 
+              class="body-2" 
+              type="text" 
+              id="nama" 
+              name="nama" 
+              required/>
+            <div class="price-stock">
+              <div class="price">
+                <label class="color-white body-2" for="harga">Harga</label>
+                <input 
+                  class="body-2" 
+                  type="number" 
+                  id="harga" 
+                  name="harga" 
+                  min="0"
+                  required/>
+              </div>
+              <div class="stock">
+                <label class="color-white body-2" for="stok">Stok Awal</label>
+                <input 
+                  class="body-2" 
+                  type="number" 
+                  id="stok" 
+                  name="stok" 
+                  min="0" 
+                  required/>
+              </div>
+            </div>
+            <label class="color-white body-2" for="desc">Deskripsi</label>
+            <textarea
+              spellcheck="false"
+              class="body-2"
+              cols="1"
+              rows="2"
+              id="desc"
+              name="desc"
+              required
+            ></textarea>
+            <div class="add-item">
+              <label class="color-white body-2 image" for="image">Tambah Gambar
+              </label>
+                <p id="file-name"></p>
+                <input
+                class="color-white"
+                id="image"
+                type="file"
+                name="image"
+                accept="image/jpeg, image/png, image/jpg"
+                required
+                />
+              <button class="bg-dark-red color-white">Tambah</button>
+              <div style="clear:both"></div>
+            </div>
+      </form>
+    </div>
+
+    <script src="add-variant.js"></script>
+  </body>
+</html>
