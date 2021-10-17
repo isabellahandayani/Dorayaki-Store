@@ -1,0 +1,102 @@
+.container {
+  max-width: 98%;
+  margin: auto;
+}
+
+.box {
+  border-radius: 20px;
+}
+
+/* Remove incr button */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Title */
+.header p {
+  padding: 15px;
+  margin: 15px auto;
+}
+
+/* Description Box */
+
+label {
+  display: block;
+}
+
+input[type="text"], input[type="number"] {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: none;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea,
+input[type="number"] {
+  padding-left: 10px;
+  width: -moz-available;
+  width: -webkit-fill-available;
+}
+
+.desc {
+  padding: 30px 20px 0 20px;
+  flex-grow: 1;
+}
+
+.price-stock {
+  display: flex;
+  flex-direction: row;
+  width: -moz-available;
+}
+
+.price,
+.stock {
+  flex: 1;
+}
+
+.stock {
+  margin-left: 20px;
+}
+
+/* Submit and Image */
+.add-item button {
+  position: inherit;
+  float: right;
+  margin-bottom: 20px;
+}
+
+.add-item input {
+  border-radius: 0;
+}
+
+@media (max-width: 768px) {
+  textarea {
+    margin-bottom: 30px;
+  }
+
+  .price-stock {
+    display: block;
+  }
+
+  .stock {
+    margin: 0;
+  }
+}
