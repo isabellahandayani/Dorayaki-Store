@@ -1,6 +1,6 @@
 <?php
 $db = new PDO('sqlite:../data/dorayaki.db');
-
+session_start();
 function getDorayaki($id)
 {
     global $db;
@@ -12,56 +12,33 @@ function getDorayaki($id)
 
 // Check if Admin
 if (isset($_POST['checkAdmin']) && $_POST['checkAdmin']) {
-    $isAdmin = $_COOKIE['admin'] == 1 ? true : false;
-    die(json_encode(array("isAdmin" => $isAdmin)));
+    die(json_encode(array("isAdmin" => $_SESSION['admin'])));
 }
 
 
 // Get All User Item
 if (isset($_GET['getItem']) && $_GET['getItem']) {
     $arr = array();
-    foreach (json_decode($_COOKIE['item']) as $key => $value) {
+
+    foreach ($_SESSION['item'] as $key) {
         $arr[$key] = getDorayaki($key);
-        $arr[$key]['qty'] = $value;
     }
     die(json_encode($arr));
 }
 
-// Get Total
-if (isset($_GET['getTotal']) && $_GET['getTotal']) {
-    $total = 0;
-    foreach (json_decode($_COOKIE['item']) as $key => $value) {
-        $temp = getDorayaki($key);
-        $total += $value * $temp['price'];
-    }
-    die(json_encode(array("total" => $total)));
-}
-
-// Check Stock
+// Get Item based on dorayaki id
 if (isset($_GET['id']) && isset($_GET['amt'])) {
-    $isAdmin = $_COOKIE['admin'] == 1 ? true : false;
     $result = getDorayaki($_GET['id']);
-    $item = json_decode($_COOKIE['item'], true);
-    if ($result['stock'] >= $_GET['amt'] || $isAdmin) {
-        $item[$_GET['id']] = $_GET['amt'];
-        setcookie('item', 1);
-        setcookie('item', json_encode($item));
-    }
-    $result['amt'] = $_GET['amt'];
-    $result['isAdmin'] = $isAdmin;
+    $result['qty'] = $_GET['amt'];
     die(json_encode($result));
 }
 
-// Get Amount of order
-if (isset($_GET['id'])) {
-    $item = json_decode($_COOKIE['item'], true);
-    die(json_encode(array("id" => $_GET['id'], "amt" => $item[$_GET['id']])));
-}
-
 // POST Order
-if (isset($_POST['buy']) && $_POST['buy']) {
+if (isset($_POST['data'])) {
     try {
-        $user_id = $_COOKIE['user_id'];
+        $json = $_POST['data'];
+        $data = json_decode($json, true);
+        $user_id = $_SESSION['user_id'];
         // Make New Order
         $query = <<<EOF
             INSERT INTO "order" (id_order, `time`, id_user)
@@ -89,12 +66,12 @@ if (isset($_POST['buy']) && $_POST['buy']) {
 
         $order_item = $db->prepare($query);
         $sold_stock = $db->prepare($query_stock);
-        foreach (json_decode($_COOKIE['item']) as $key => $value) {
+        foreach ($data as $key => $value) {
             $order_item->execute(array($key, $value));
             $sold_stock->execute(array($value, $value, $key));
         }
-        setcookie('item', 1);
-        setcookie('item', json_encode(array()));
+
+        $_SESSION['item'] = array();
         die(json_encode(array("success" => true)));
     } catch (Exception $e) {
         die(json_encode(array("success" => false)));
@@ -104,6 +81,11 @@ if (isset($_POST['buy']) && $_POST['buy']) {
 // Change stock
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     try {
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $json = $_PUT['data'];
+        $data = json_decode($json, true);
+        $user_id = $_SESSION['user_id'];
+
         $query = <<<EOF
         UPDATE Dorayaki
         SET stock = ?
@@ -112,13 +94,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 
         $update = $db->prepare($query);
 
-        foreach (json_decode($_COOKIE['item'], true) as $key => $value) {
+        foreach ($data as $key => $value) {
             $update->execute(array($value, $key));
-            setcookie('item', 1);
-            setcookie('item', json_encode(array()));
         }
-        die(json_encode(array("success" => true, "isAdmin" => $_COOKIE['admin'])));
+        $_SESSION['item'] = array();
+        die(json_encode(array("success" => true)));
     } catch (Exception $e) {
-        die(json_encode(array("success" => false, "isAdmin" => $_COOKIE['admin'])));
+        die(json_encode(array("success" => false,)));
     }
 }
