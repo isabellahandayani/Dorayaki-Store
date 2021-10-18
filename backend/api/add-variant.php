@@ -1,6 +1,6 @@
 <?php
 try {
-    $db = new PDO('sqlite:../../../backend/data/dorayaki.db');
+    $db = new PDO('sqlite:../data/dorayaki.db');
     if (isset($_POST['nama'])) {
         $check = $db->query('select dorayaki_name from dorayaki;');
 
@@ -13,10 +13,10 @@ try {
         }
 
         if ($found) {
-            echo "<script>alert('Varian Sudah Ada!');window.location.href='add-variant.html'</script>";
+            echo "<script>alert('Varian Sudah Ada!');window.location.href='../../frontend/pages/add-variant/'</script>";
         } else {
             // Save Image
-            $upload_file = '../../../backend/image/' . basename($_FILES['image']['name']);
+            $upload_file = '../image/' . basename($_FILES['image']['name']);
 
             move_uploaded_file($_FILES['image']['tmp_name'], $upload_file);
 
@@ -32,7 +32,7 @@ try {
                 EOF;
             $db->exec($query);
 
-            echo "<script>alert('Varian berhasil ditambahkan!');window.location.href='add-variant.html'</script>";
+            echo "<script>alert('Varian berhasil ditambahkan!');window.location.href='../../frontend/pages/add-variant/'</script>";
         }
     }
 } catch (PDOException $e) {

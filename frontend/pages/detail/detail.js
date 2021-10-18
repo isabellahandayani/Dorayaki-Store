@@ -29,5 +29,5 @@ const deleteCallback = (data) => {
 
 document.querySelector(".del-btn").addEventListener("click", function () {
   // dummy
-  deleteDorayaki("../../../backend/api/detail.php", deleteCallback, "id=33");
+  deleteDorayaki("../../../backend/api/detail.php", deleteCallback, "id=34");
 });

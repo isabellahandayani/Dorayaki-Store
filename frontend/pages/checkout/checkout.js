@@ -202,13 +202,15 @@ const cartCallback = (data) => {
     let bill = document.getElementsByClassName("list-item")[0];
     list.innerHTML = "";
     bill.innerHTML = "";
+    console.log(res);
     for (const [key, value] of Object.entries(res)) {
+      let photo = "../../../backend" + res[key]["photo"].split("...").at(-1);
       let item = document.createElement("div");
       item.classList.add("item", "bg-blue");
 
       // Add Cart Item
       item.innerHTML = templateItem(
-        res[key]["photo"],
+        photo,
         res[key]["dorayaki_name"],
         key,
         res[key]["price"]
@@ -234,7 +236,6 @@ const updateCallback = (data) => {
   `
     Update Number of Order
   `;
-  console.log(data);
   let res = JSON.parse(data);
   let amount = document.getElementById("amount");
   if (Number(res["stock"]) >= Number(res["amt"]) || res["isAdmin"]) {
