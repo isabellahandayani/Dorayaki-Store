@@ -1,7 +1,7 @@
 const deleteDorayaki = (url, callback, data) => {
-  `
-    AJAX for GET
-    `;
+  /*
+    DELETE METHOD
+  */
   let xhr = new XMLHttpRequest();
   xhr.overrideMimeType("application/json");
   xhr.open("DELETE", url, true);
@@ -15,10 +15,9 @@ const deleteDorayaki = (url, callback, data) => {
 };
 
 const deleteCallback = (data) => {
-  `
-        Delete Confirmation Status
-    `;
-  console.log(data);
+  /*
+    Delete Confirmation Status
+  */
   let res = JSON.parse(data);
   if (res["success"]) {
     alert("Penghapusan Berhasil");

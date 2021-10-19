@@ -1,16 +1,16 @@
 window.onclick = function (event) {
-  `
+  /*
     Close Modal
-  `;
+  */
   if (event.target == modal) {
     modal.style.display = "none";
   }
 };
 
 const getOrder = () => {
-  `
+  /*
     Get order from cookie
-  `;
+  */
   let regex = /item-.*/g;
   var matches = {};
   while ((match = regex.exec(document.cookie))) {
@@ -21,9 +21,9 @@ const getOrder = () => {
 };
 
 document.getElementById("submit").onclick = function (event) {
-  `
+  /*
     Submit Order Event
-  `;
+  */
   event.preventDefault();
   postItem(
     "../../../backend/api/checkout.php",
@@ -33,9 +33,9 @@ document.getElementById("submit").onclick = function (event) {
 };
 
 document.getElementById("update").onclick = function (event) {
-  `
+  /*
     Update Stock Event
-  `;
+  */
   event.preventDefault();
   putItem(
     "../../../backend/api/checkout.php",
@@ -45,9 +45,9 @@ document.getElementById("update").onclick = function (event) {
 };
 
 const editEvent = () => {
-  `
+  /*
     Add Modal to Page
-  `;
+  */
   let modal = document.getElementById("modal");
   let btns = document.getElementsByClassName("edit-btn");
 
@@ -61,9 +61,9 @@ const editEvent = () => {
 };
 
 const templateModal = (id) => {
-  `
+  /*
     Modal template
-  `;
+  */
   let key = id.split("-").at(-1);
   return `
   <div class="modal-content bg-blue">
@@ -93,9 +93,9 @@ function deleteCookie(name) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 const templateItem = (photo, name, id, price) => {
-  `
+  /*
     Cart Item Template
-  `;
+  */
   return `
   <img src="${photo}" alt="${name}"/>
   <div class="desc">
@@ -107,9 +107,9 @@ const templateItem = (photo, name, id, price) => {
 };
 
 const templateBill = (name, id, qty, price) => {
-  `
+  /*
     Bill template
-  `;
+  */
   return `
   <p class="body-2 color-white">${name}</p>
   <p class="body-2 color-white item-${id}">${qty}x ${price}</p> 
@@ -117,9 +117,9 @@ const templateBill = (name, id, qty, price) => {
 };
 
 const editButtons = () => {
-  ` 
+  /* 
     Set event listener for buttons
-  `;
+  */
   document.querySelector("#incr").addEventListener(
     "click",
     function () {
@@ -155,9 +155,9 @@ const editButtons = () => {
 };
 
 const getItem = (url, callback) => {
-  `
+  /*
   AJAX for GET
-  `;
+  */
   let xhr = new XMLHttpRequest();
   xhr.overrideMimeType("application/json");
   xhr.open("GET", url, true);
@@ -171,9 +171,9 @@ const getItem = (url, callback) => {
 };
 
 const postItem = (url, callback, data) => {
-  `
+  /*
   AJAX for POST
-  `;
+  */
   let xhr = new XMLHttpRequest();
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -187,9 +187,9 @@ const postItem = (url, callback, data) => {
 };
 
 const putItem = (url, callback, data) => {
-  `
+  /*
     PUT METHOD
-  `;
+  */
   let xhr = new XMLHttpRequest();
   xhr.open("PUT", url, true);
   xhr.onreadystatechange = function () {
@@ -202,11 +202,11 @@ const putItem = (url, callback, data) => {
 };
 
 const cartCallback = (data) => {
-  `
+  /*
   Add User Order Item to Page
   
   data : xhr.responseText
-  `;
+  */
   let res = JSON.parse(data);
   let list = document.getElementsByClassName("content")[0];
 
@@ -254,10 +254,10 @@ const cartCallback = (data) => {
 };
 
 const updateCallback = (data) => {
-  `
+  /*
     Update Number of Order
-  `;
-  let res = JSON.parse(data);
+  */ 
+ let res = JSON.parse(data);
   let amount = document.getElementById("amount");
   if (
     Number(res["stock"]) >= Number(res["qty"]) ||
@@ -274,10 +274,10 @@ const updateCallback = (data) => {
 };
 
 const totalCallback = (data) => {
-  `
+  /*
     Update Total Price
-  `;
-  let res = JSON.parse(data);
+  */ 
+ let res = JSON.parse(data);
   let total = document.getElementById("total");
   let sum = 0;
   for (key in res) {
@@ -287,10 +287,10 @@ const totalCallback = (data) => {
 };
 
 const confirmCallback = (data) => {
-  `
+  /*
     Succesful Submit Confirmation
-  `;
-  let res = JSON.parse(data);
+  */ 
+ let res = JSON.parse(data);
   if (!res["success"]) {
     alert("Gagal");
   }
@@ -305,9 +305,9 @@ const confirmCallback = (data) => {
 };
 
 const checkAdmin = (data) => {
-  `
+  /*  
     Check if user is Admin
-  `;
+  */
   let res = JSON.parse(data);
   let update_btn = document.getElementById("update");
   if (res["isAdmin"]) {
