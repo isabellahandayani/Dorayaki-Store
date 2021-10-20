@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../global.css" rel="stylesheet">
-    <link href="./Search.css" rel="stylesheet">
+    <link href="./search.css" rel="stylesheet">
     <title>Cari: Dorayaki Enak</title>
 </head>
 <body>
@@ -33,66 +33,44 @@
             <div class="bg-white search-bar">
                 <img src="../../assets/icons/bi_search.svg">
                 <div style="width: 10px;"></div>
-                <input>
+                <input id="filter">
             </div>
         </div>
     </div>
     <!-- CONTENT -->
     <div class="body body-1">
         Hasil Pencarian "Dorayaki Enak":
-        <div style="height: 30px;"></div>
+        <div class="space"></div>
 
         <!-- Results -->
-        <div class="result-card bg-blue">
-            <img src="../../assets/images/dorayaki.png">
-            <div class="info color-white">
-                <span>Dorayaki</span>
-                <div class="price">Rp. 5.000</div>
+        <div id="dorayaki">
+            <!-- <div class="result-card bg-blue">
+                <img src="../../assets/images/dorayaki.png">
+                <div class="info color-white">
+                    <span>Dorayaki</span>
+                    <div class="price">Rp. 5.000</div>
+                </div>
             </div>
-        </div>
-        <div class="result-card bg-blue">
-            <img src="../../assets/images/dorayaki.png">
-            <div class="info color-white">
-                <span>Dorayaki</span>
-                <div class="price">Rp. 5.000</div>
-            </div>
-        </div>
-        <div class="result-card bg-blue">
-            <img src="../../assets/images/dorayaki.png">
-            <div class="info color-white">
-                <span>Dorayaki</span>
-                <div class="price">Rp. 5.000</div>
-            </div>
-        </div>
-        <div class="result-card bg-blue">
-            <img src="../../assets/images/dorayaki.png">
-            <div class="info color-white">
-                <span>Dorayaki</span>
-                <div class="price">Rp. 5.000</div>
-            </div>
-        </div>
-        <div class="result-card bg-blue">
-            <img src="../../assets/images/dorayaki.png">
-            <div class="info color-white">
-                <span>Dorayaki</span>
-                <div class="price">Rp. 5.000</div>
-            </div>
-        </div>
-        <div class="result-card bg-blue">
-            <img src="../../assets/images/dorayaki.png">
-            <div class="info color-white">
-                <span>Dorayaki</span>
-                <div class="price">Rp. 5.000</div>
-            </div>
+            <div class="result-card bg-blue">
+                <img src="../../assets/images/dorayaki.png">
+                <div class="info color-white">
+                    <span>Dorayaki</span>
+                    <div class="price">Rp. 5.000</div>
+                </div>
+            </div> -->
         </div>
 
         <!-- Buttons -->
         <div class="buttons">
-            <button class="bg-dark-red color-white">Prev</button>
-            <button class="bg-dark-red color-white">Next</button>
+            <button id="prev-btn" class="bg-dark-red color-white" onclick="pagination(-1)">
+                Prev
+            </button>
+            <div></div>
+            <button id="next-btn" class="bg-dark-red color-white" onclick="pagination(1)">
+                Next
+            </button>
         </div>
-
-        <div style="height: 50px;"></div>
     </div>
+    <script src="search.js"></script>
 </body>
 </html>
