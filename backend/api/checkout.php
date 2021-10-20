@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Headers: *");
+
 $db = new PDO('sqlite:../data/dorayaki.db');
 session_start();
 function getDorayaki($id)

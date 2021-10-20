@@ -18,15 +18,16 @@ const deleteCallback = (data) => {
   /*
     Delete Confirmation Status
   */
+ console.log(data);
   let res = JSON.parse(data);
   if (res["success"]) {
     alert("Penghapusan Berhasil");
   } else {
-    alert("Penghapusan Berhasil");
+    alert("Penghapusan Gagal");
   }
 };
 
 document.querySelector(".del-btn").addEventListener("click", function () {
   // dummy
-  deleteDorayaki("../../../backend/api/detail.php", deleteCallback, "id=34");
+  deleteDorayaki("http://localhost/spidermen-web/backend/api/detail.php", deleteCallback, "id=40");
 });

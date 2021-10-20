@@ -26,7 +26,7 @@ document.getElementById("submit").onclick = function (event) {
   */
   event.preventDefault();
   postItem(
-    "../../../backend/api/checkout.php",
+    "http://localhost/spidermen-web/backend/api/checkout.php",
     confirmCallback,
     "data=" + JSON.stringify(getOrder())
   );
@@ -38,7 +38,7 @@ document.getElementById("update").onclick = function (event) {
   */
   event.preventDefault();
   putItem(
-    "../../../backend/api/checkout.php",
+    "http://localhost/spidermen-web/backend/api/checkout.php",
     confirmCallback,
     "data=" + JSON.stringify(getOrder())
   );
@@ -127,7 +127,7 @@ const editButtons = () => {
       let amount = parseInt(document.getElementById("amount").innerText);
       amount++;
       getItem(
-        `../../../backend/api/checkout.php?id=${id
+        `http://localhost/spidermen-web/backend/api/checkout.php?id=${id
           .split("-")
           .at(-1)}&amt=${amount}`,
         updateCallback
@@ -144,7 +144,7 @@ const editButtons = () => {
       amount--;
       amount = amount >= 1 ? amount : 1;
       getItem(
-        `../../../backend/api/checkout.php?id=${id
+        `http://localhost/spidermen-web/backend/api/checkout.php?id=${id
           .split("-")
           .at(-1)}&amt=${amount}`,
         updateCallback
@@ -217,6 +217,7 @@ const cartCallback = (data) => {
     list.innerHTML = `
       <h1 class="color-blue">Belum Ada Barang :D</h1>
     `;
+
     update_btn.style.display = "none";
     trans.style.display = "none";
   } else {
@@ -224,7 +225,7 @@ const cartCallback = (data) => {
     list.innerHTML = "";
     bill.innerHTML = "";
     for (const [key, value] of Object.entries(res)) {
-      let photo = "../../../backend" + res[key]["photo"].split("...").at(-1);
+      let photo = "http://localhost/spidermen-web/backend/image/" + res[key]["photo"];
       let item = document.createElement("div");
       item.classList.add("item", "bg-blue");
 
@@ -317,14 +318,14 @@ const checkAdmin = (data) => {
   } else {
     // Short Polling for Price
     setInterval(function () {
-      getItem("../../../backend/api/checkout.php?getItem=true", totalCallback);
+      getItem("http://localhost/spidermen-web/backend/api/checkout.php?getItem=true", totalCallback);
       getOrder();
     }, 50);
     update_btn.style.display = "none";
     setCookie("isAdmin", false);
   }
   // Populate Cart Item
-  getItem("../../../backend/api/checkout.php?getItem=true", cartCallback);
+  getItem("http://localhost/spidermen-web/backend/api/checkout.php?getItem=true", cartCallback);
 };
 
-postItem("../../../backend/api/checkout.php", checkAdmin, "checkAdmin=true");
+postItem("http://localhost/spidermen-web/backend/api/checkout.php", checkAdmin, "checkAdmin=true");

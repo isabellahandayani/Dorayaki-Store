@@ -32,4 +32,4 @@ const historyCallback = (data) => {
   }
 };
 
-getHistory("../../../backend/api/history.php?getHistory=true", historyCallback);
+getHistory("http://localhost/spidermen-web/backend/api/history.php?getHistory=true", historyCallback);
