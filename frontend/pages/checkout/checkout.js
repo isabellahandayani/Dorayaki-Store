@@ -311,6 +311,7 @@ const checkAdmin = (data) => {
   */
   let res = JSON.parse(data);
   let update_btn = document.getElementById("update");
+  console.log(res);
   if (res["isAdmin"]) {
     let trans = document.getElementById("transaction");
     trans.style.display = "none";
