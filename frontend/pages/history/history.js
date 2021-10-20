@@ -1,7 +1,7 @@
 const getHistory = (url, callback) => {
-  `
+  /*
         GET History Data
-    `;
+  */
   let xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
   xhr.onreadystatechange = function () {
@@ -21,25 +21,15 @@ const historyCallback = (data) => {
       table.innerHTML +=
         `
       <tr>
-        <td class="body-2">` +
-        key +
-        `</td>
-        <td class="body-2">` +
-        res[key][x]["time"] +
-        `</td>
-        <td class="body-2">` +
-        res[key][x]["dorayaki_name"] +
-        `</td>
-        <td class="body-2">` +
-        res[key][x]["qty"] +
-        `</td>
-        <td class="body-2">` +
-        res[key][x]["sum"] +
-        `</td>
+        <td class="body-2">${key}</td>
+        <td class="body-2">${res[key][x]['time']}</td>
+        <td class="body-2">${res[key][x]['dorayaki_name']}</td>
+        <td class="body-2">${res[key][x]['qty']}</td>
+        <td class="body-2">${res[key][x]['sum']}</td>
       </tr>
       `;
     }
   }
 };
 
-getHistory("../../../backend/api/history.php?getHistory=true", historyCallback);
+getHistory("http://localhost/spidermen-web/backend/api/history.php?getHistory=true", historyCallback);
