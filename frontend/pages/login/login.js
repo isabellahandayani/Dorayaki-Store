@@ -1,9 +1,5 @@
 const BASE_URL = "../../../backend/api"
 
-function setCookie(name, value) {
-  document.cookie = `${name}= ${value}; path=/`;
-}
-
 function login(event) {
   event.preventDefault();
   var username = document.getElementById('username').value;
