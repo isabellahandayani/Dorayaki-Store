@@ -38,5 +38,5 @@ function setDashboard(data) {
 }
 
 function openDetail(id) {
-  window.location.pathname = `frontend/pages/detail/?${id}`;
+  window.location.href = `pages/detail/?${id}`;
 }
