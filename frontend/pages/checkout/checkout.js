@@ -1,10 +1,10 @@
-const BASE_URL = "../../../backend/api"
+const BASE_URL = "../../../backend/api";
 const IMG_PATH = "../../../backend/image/";
 
 window.onload = () => {
   setNavbar();
   checkAdmin();
-}
+};
 
 window.onclick = function (event) {
   /*
@@ -19,11 +19,16 @@ const getOrder = () => {
   /*
     Get order from cookie
   */
-  let regex = /item-.*/g;
+  let value = document.cookie + ";";
+  let regex = /item-.*;/g;
   var matches = {};
-  while ((match = regex.exec(document.cookie))) {
-    let x = match[0].toString().split("=");
-    matches[x[0].split("-").at(-1)] = Number(x[1]);
+  let match = (regex.exec(value))[0].split(" ");
+  for(item of match) {
+    let x = item.toString().split("=");
+    let id = x[0].split("-").at(-1);
+    let qty = x[1][0];
+    matches[id] = qty;
+    deleteCookie(`item-${id}`);
   }
   return matches;
 };
@@ -127,7 +132,7 @@ const editButtons = () => {
       let amount = parseInt(document.getElementById("amount").innerText);
       amount++;
       getItem(
-        `${BASE_URL}/checkout.php?id=${id}&amt=${amount}`,
+        `${BASE_URL}/checkout.php?id=${id.split("-").at(-1)}&amt=${amount}`,
         updateCallback
       );
     },
@@ -142,9 +147,7 @@ const editButtons = () => {
       amount--;
       amount = amount >= 1 ? amount : 1;
       getItem(
-        `${BASE_URL}/checkout.php?id=${d
-          .split("-")
-          .at(-1)}&amt=${amount}`,
+        `${BASE_URL}/checkout.php?id=${id.split("-").at(-1)}&amt=${amount}`,
         updateCallback
       );
     },
@@ -206,11 +209,9 @@ const cartCallback = (data) => {
   data : xhr.responseText
   */
 
-  console.log("test", data)
   let res = JSON.parse(data);
   let list = document.getElementsByClassName("content")[0];
 
-  console.log(res);
   // Check if there are item in order/update
   if (res.length == 0) {
     let update_btn = document.getElementById("update");
@@ -259,6 +260,7 @@ const updateCallback = (data) => {
   /*
     Update Number of Order
   */
+  console.log(data);
   let res = JSON.parse(data);
   let amount = document.getElementById("amount");
   if (
@@ -292,15 +294,17 @@ const confirmCallback = (data) => {
   /*
     Succesful Submit Confirmation
   */
+ console.log(data);
+ console.log(getCookie("isAdmin"));
   let res = JSON.parse(data);
   if (!res["success"]) {
     alert("Gagal");
   }
-  if (res["success"] && getCookie("isAdmin") === "false") {
+  if (res["success"] && getCookie("isAdmin") == 0) {
     alert("Pembelian Berhasil");
   }
 
-  if (res["success"] && getCookie("isAdmin") === "true") {
+  if (res["success"] && getCookie("isAdmin") == 1) {
     alert("Perubahan Berhasil");
   }
   location.reload();
@@ -319,7 +323,6 @@ const checkAdmin = () => {
     // Short Polling for Price
     setInterval(function () {
       getItem(`${BASE_URL}/checkout.php?getItem=true`, totalCallback);
-      getOrder();
     }, 3000);
     update_btn.style.display = "none";
   }

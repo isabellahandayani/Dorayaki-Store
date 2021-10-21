@@ -39,7 +39,7 @@ const deleteDorayaki = (url, callback, data) => {
   /*
     DELETE METHOD
   */
-  xhr.overrideMimeType("application/json");
+  // xhr.overrideMimeType("application/json");
   xhr.open("DELETE", url, true);
   xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -60,6 +60,7 @@ const deleteCallback = (data) => {
   } else {
     alert("Penghapusan Gagal");
   }
+  window.location.href = "../../"
 };
 
 const buyDorayaki = (event) => {

@@ -1,3 +1,5 @@
+const IMG_PATH = "../../../backend/image/";
+
 let xhr = new XMLHttpRequest();
 
 var dorayakiData;
@@ -49,7 +51,7 @@ function setDorayaki(data) {
     data.forEach(({ id_dorayaki, dorayaki_name, price, photo }) => {
         html += `
         <div id=${id_dorayaki} class="result-card bg-blue" onclick="openDetail(${id_dorayaki})">
-            <img src="${photo}">
+            <img src="${IMG_PATH + photo}">
             <div class="info color-white">
                 <div>${dorayaki_name}</div>
                 <div class="price">Rp. ${price}</div>
