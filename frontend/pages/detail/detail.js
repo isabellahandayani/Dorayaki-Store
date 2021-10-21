@@ -25,7 +25,7 @@ const loadData = (data) => {
 
   document.getElementById('dorayaki-name').innerHTML = dorayaki_name;
   document.getElementById('dorayaki-img').src = photo ? IMG_PATH+photo : defaultImg;
-  document.getElementById('stock').innerHTML = `${stock} Biji`;
+  document.getElementById('stock').innerHTML = `${stock} Buah`;
   document.getElementById('price').innerHTML = `Rp. ${price}`;
   document.getElementById('sold').innerHTML = `${sold_stock} Terjual`;
   document.getElementById('desc').innerHTML = desc;
