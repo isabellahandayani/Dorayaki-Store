@@ -1,3 +1,7 @@
+window.onload = () => {
+  setNavbar();
+}
+
 window.onclick = function (event) {
   /*
     Close Modal
@@ -26,7 +30,7 @@ document.getElementById("submit").onclick = function (event) {
   */
   event.preventDefault();
   postItem(
-    "http://localhost/spidermen-web/backend/api/checkout.php",
+    "http://localhost:5000/spidermen-web/backend/api/checkout.php",
     confirmCallback,
     "data=" + JSON.stringify(getOrder())
   );
@@ -38,7 +42,7 @@ document.getElementById("update").onclick = function (event) {
   */
   event.preventDefault();
   putItem(
-    "http://localhost/spidermen-web/backend/api/checkout.php",
+    "http://localhost:5000/spidermen-web/backend/api/checkout.php",
     confirmCallback,
     "data=" + JSON.stringify(getOrder())
   );
@@ -144,7 +148,7 @@ const editButtons = () => {
       amount--;
       amount = amount >= 1 ? amount : 1;
       getItem(
-        `http://localhost/spidermen-web/backend/api/checkout.php?id=${id
+        `http://localhost:5000/spidermen-web/backend/api/checkout.php?id=${id
           .split("-")
           .at(-1)}&amt=${amount}`,
         updateCallback
@@ -225,7 +229,7 @@ const cartCallback = (data) => {
     list.innerHTML = "";
     bill.innerHTML = "";
     for (const [key, value] of Object.entries(res)) {
-      let photo = "http://localhost/spidermen-web/backend/image/" + res[key]["photo"];
+      let photo = "http://localhost:5000/spidermen-web/backend/image/" + res[key]["photo"];
       let item = document.createElement("div");
       item.classList.add("item", "bg-blue");
 
@@ -319,14 +323,14 @@ const checkAdmin = (data) => {
   } else {
     // Short Polling for Price
     setInterval(function () {
-      getItem("http://localhost/spidermen-web/backend/api/checkout.php?getItem=true", totalCallback);
+      getItem("http://localhost:5000/spidermen-web/backend/api/checkout.php?getItem=true", totalCallback);
       getOrder();
     }, 50);
     update_btn.style.display = "none";
     setCookie("isAdmin", false);
   }
   // Populate Cart Item
-  getItem("http://localhost/spidermen-web/backend/api/checkout.php?getItem=true", cartCallback);
+  getItem("http://localhost:5000/spidermen-web/backend/api/checkout.php?getItem=true", cartCallback);
 };
 
-postItem("http://localhost/spidermen-web/backend/api/checkout.php", checkAdmin, "checkAdmin=true");
+postItem("http://localhost:5000/spidermen-web/backend/api/checkout.php", checkAdmin, "checkAdmin=true");

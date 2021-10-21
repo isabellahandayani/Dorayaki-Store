@@ -1,50 +1,56 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../global.css" rel="stylesheet">
-    <link href="./search.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../global.css" rel="stylesheet" />
+    <link href="./search.css" rel="stylesheet" />
     <title>Cari: Dorayaki Enak</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- NAVBAR -->
     <div class="navbar color-white bg-blue body-1">
-        <div class="title">
-            <span class="heading-3">S</span>
-            tand
-            <span class="heading-3">B</span>
-            y
-            <span class="heading-3">D</span>
-            orayaki
+      <div
+        id="nav-home-button"
+        class="title clickable"
+        onclick="window.location.pathname='frontend/';"
+      >
+        <span class="heading-3">S</span>
+        tand
+        <span class="heading-3">B</span>
+        y
+        <span class="heading-3">D</span>
+        orayaki
+      </div>
+      <div class="menu">
+        <button
+          class="bg-dark-red color-white"
+          id="nav-login-logout-button"
+        ></button>
+        <div style="width: 20px"></div>
+
+        <div id="nav-username"></div>
+        <div style="width: 20px"></div>
+
+        <div id="nav-search" class="bg-white search-bar">
+          <img
+            src="../../assets/icons/bi_search.svg"
+            onclick="window.searchDorayaki()"
+            style="cursor: pointer"
+          />
+          <div style="width: 10px"></div>
+          <input id="filter" />
         </div>
-        <div class="menu">
-            <button class="bg-dark-red color-white">
-                Logout
-            </button>
-            <div style="width: 20px;"></div>
-
-            <div>Dora</div>
-            <div style="width: 20px;"></div>
-
-            <img src="../../assets/icons/akar-icons_cart.svg">
-            <div style="width: 20px;"></div>
-
-            <div class="bg-white search-bar">
-                <img src="../../assets/icons/bi_search.svg">
-                <div style="width: 10px;"></div>
-                <input id="filter">
-            </div>
-        </div>
+      </div>
     </div>
     <!-- CONTENT -->
     <div class="body body-1">
-        Hasil Pencarian "Dorayaki Enak":
-        <div class="space"></div>
+      Hasil Pencarian "Dorayaki Enak":
+      <div class="space"></div>
 
-        <!-- Results -->
-        <div id="dorayaki">
-            <!-- <div class="result-card bg-blue">
+      <!-- Results -->
+      <div id="dorayaki">
+        <!-- <div class="result-card bg-blue">
                 <img src="../../assets/images/dorayaki.png">
                 <div class="info color-white">
                     <span>Dorayaki</span>
@@ -58,19 +64,28 @@
                     <div class="price">Rp. 5.000</div>
                 </div>
             </div> -->
-        </div>
+      </div>
 
-        <!-- Buttons -->
-        <div class="buttons">
-            <button id="prev-btn" class="bg-dark-red color-white" onclick="pagination(-1)">
-                Prev
-            </button>
-            <div></div>
-            <button id="next-btn" class="bg-dark-red color-white" onclick="pagination(1)">
-                Next
-            </button>
-        </div>
+      <!-- Buttons -->
+      <div class="buttons">
+        <button
+          id="prev-btn"
+          class="bg-dark-red color-white"
+          onclick="pagination(-1)"
+        >
+          Prev
+        </button>
+        <div></div>
+        <button
+          id="next-btn"
+          class="bg-dark-red color-white"
+          onclick="pagination(1)"
+        >
+          Next
+        </button>
+      </div>
     </div>
+    <script src="../../navbar.js"></script>
     <script src="search.js"></script>
-</body>
+  </body>
 </html>

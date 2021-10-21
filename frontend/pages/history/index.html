@@ -13,7 +13,11 @@
   <body>
     <!-- NAVBAR -->
     <div class="navbar color-white bg-blue body-1">
-      <div class="title">
+      <div
+        id="nav-home-button"
+        class="title clickable"
+        onclick="window.location.pathname='frontend/';"
+      >
         <span class="heading-3">S</span>
         tand
         <span class="heading-3">B</span>
@@ -22,19 +26,23 @@
         orayaki
       </div>
       <div class="menu">
-        <button class="bg-dark-red color-white">Logout</button>
+        <button
+          class="bg-dark-red color-white"
+          id="nav-login-logout-button"
+        ></button>
         <div style="width: 20px"></div>
 
-        <div>Dora</div>
+        <div id="nav-username"></div>
         <div style="width: 20px"></div>
 
-        <img src="../../assets/icons/akar-icons_cart.svg" />
-        <div style="width: 20px"></div>
-
-        <div class="bg-white search-bar">
-          <img src="../../assets/icons/bi_search.svg" />
+        <div id="nav-search" class="bg-white search-bar">
+          <img
+            src="../../assets/icons/bi_search.svg"
+            onclick="window.searchDorayaki()"
+            style="cursor: pointer"
+          />
           <div style="width: 10px"></div>
-          <input />
+          <input id="filter" />
         </div>
       </div>
     </div>
@@ -51,6 +59,7 @@
       </table>
     </div>
 
+    <script src="../../navbar.js"></script>
     <script src="history.js"></script>
   </body>
 </html>

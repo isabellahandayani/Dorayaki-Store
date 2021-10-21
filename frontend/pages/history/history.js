@@ -1,3 +1,8 @@
+window.onload = () => {
+  setNavbar();
+}
+
+
 const getHistory = (url, callback) => {
   /*
         GET History Data
