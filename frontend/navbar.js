@@ -9,7 +9,7 @@ window.getUsername = function () {
 
 window.searchDorayaki = () => {
   const name = document.getElementById("filter").value;
-  window.location.pathname = `frontend/pages/search/?name=${name}`
+  window.location.href = `pages/search/?name=${name}`
 };
 
 window.logout = () => {
@@ -22,22 +22,28 @@ const deleteCookie = (name) => {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
+function setCookie(name, value) {
+  document.cookie = `${name}= ${value}; path=/`;
+}
+
 const setNavbar = () => {
   const sessionID = window.getCookie("sessionID");
   
   if (!sessionID) {
     document.getElementById("nav-username").style.display = "none";
     // document.getElementById("nav-cart").style.display = "none";
-    document.getElementById("nav-login-logout-button").innerHTML = "Login";
+    document.getElementById("nav-login-logout-button").innerHTML = 
+      window.location.pathname.includes("login") ? "Register" : "Login";
     document.getElementById("nav-login-logout-button").onclick = () => {
-      window.location.pathname = "frontend/pages/login/"
+      window.location.pathname = 
+      window.location.pathname.includes("login") ? "frontend/pages/register/" : "frontend/pages/login/";
     };
   } else {
     document.getElementById("nav-username").innerText = window.getUsername();
     document.getElementById("nav-login-logout-button").innerHTML = "Logout";
     document.getElementById("nav-login-logout-button").onclick = () => {
       window.logout();
-      window.location.pathname = "frontend/pages/login"
+      window.location.pathname = "frontend/pages/login/"
     };
   }
 }
