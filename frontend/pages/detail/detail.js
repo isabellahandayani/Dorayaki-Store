@@ -6,7 +6,7 @@ const defaultImg = "../../assets/images/dorayaki.png";
 window.onload = () => {
   setNavbar();
 
-  if(!getCookie("SessionID")) {
+  if(!getCookie("sessionID")) {
     window.location.href = "../login/"
   }
   var id = window.location.href.split('?')[1];

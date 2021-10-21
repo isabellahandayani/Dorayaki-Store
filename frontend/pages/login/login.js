@@ -25,7 +25,7 @@ function login(event) {
 
         window.location.href = "../../index.html";
       } else {
-        console.log("MEH");
+        console.log("Wrong Info");
       }
     } else {
       console.log(this)
@@ -37,4 +37,7 @@ function login(event) {
 
 window.onload = () => {
   setNavbar();
+  if(getCookie("sessionID")) {
+    window.location.href = "../../"
+  }
 }

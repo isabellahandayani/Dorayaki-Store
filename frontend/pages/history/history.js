@@ -2,7 +2,7 @@ const BASE_URL = "../../../backend/api";
 
 window.onload = () => {
   setNavbar();
-  if(!getCookie("SessionID")) {
+  if(!getCookie("sessionID")) {
     window.location.href = "../login/"
   }
 }

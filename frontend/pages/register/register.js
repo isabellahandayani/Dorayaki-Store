@@ -32,4 +32,7 @@ function register(event) {
 
 window.onload = () => {
   setNavbar();
+  if(getCookie("sessionID")) {
+    window.location.href = "../../"
+  }
 }

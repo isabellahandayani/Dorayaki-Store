@@ -3,7 +3,7 @@ const IMG_PATH = "../../../backend/image/";
 
 window.onload = () => {
   setNavbar();
-  if(!getCookie("SessionID")) {
+  if(!getCookie("sessionID")) {
     window.location.href = "../login/"
   }
   checkAdmin();
