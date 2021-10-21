@@ -6,7 +6,9 @@ const defaultImg = "../../assets/images/dorayaki.png";
 window.onload = () => {
   setNavbar();
 
-  var id = window.location.pathname.split('?')[1];
+  var id = window.location.href.split('?')[1];
+
+  console.log("test", id)
 
   xhr.open("GET", API_URL + `detail-dorayaki.php?id_dorayaki=${id}`);
   xhr.onreadystatechange = function () {
@@ -58,6 +60,22 @@ const deleteCallback = (data) => {
   } else {
     alert("Penghapusan Gagal");
   }
+};
+
+const buyDorayaki = (event) => {
+  event.preventDefault();
+  var id = window.location.href.split('?')[1];
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", API_URL + "checkout.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(xhr.responseText);
+      window.location.pathname = "frontend/pages/checkout/"
+    }
+  };
+
+  xhr.send(`id=${id}`)
 };
 
 document.querySelector(".del-btn").addEventListener("click", function () {

@@ -12,12 +12,6 @@ function getDorayaki($id)
     return $res;
 }
 
-// Check if Admin
-if (isset($_POST['checkAdmin']) && $_POST['checkAdmin']) {
-    die(json_encode(array("isAdmin" => $_SESSION['admin'])));
-}
-
-
 // Get All User Item
 if (isset($_GET['getItem']) && $_GET['getItem']) {
     $arr = array();
@@ -28,6 +22,11 @@ if (isset($_GET['getItem']) && $_GET['getItem']) {
     die(json_encode($arr));
 }
 
+// POST order item
+if (isset($_POST['id'])) {
+    array_push($_SESSION['item'], $_POST['id']);
+    $_SESSION['user_id'] = $_POST['user_id'];
+}
 // Get Item based on dorayaki id
 if (isset($_GET['id']) && isset($_GET['amt'])) {
     $result = getDorayaki($_GET['id']);
