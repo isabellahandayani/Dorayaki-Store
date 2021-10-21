@@ -157,7 +157,7 @@ input:focus-visible {
 .dashboard {
   display: grid;
   grid-template-columns: auto auto auto;
-  border: solid red 1px;
+  min-height: calc(100vh - 87px);
   justify-content: center;
   align-items: center;
 }
