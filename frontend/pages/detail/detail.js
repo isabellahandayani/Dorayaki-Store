@@ -8,8 +8,6 @@ window.onload = () => {
 
   var id = window.location.href.split('?')[1];
 
-  console.log("test", id)
-
   xhr.open("GET", API_URL + `detail-dorayaki.php?id_dorayaki=${id}`);
   xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -54,8 +52,9 @@ const deleteCallback = (data) => {
   /*
     Delete Confirmation Status
   */
-  let res = JSON.parse(data);
-  if (res["success"]) {
+ let res = JSON.parse(data);
+ console.log(res);
+  if (res["statusCode"]) {
     alert("Penghapusan Berhasil");
   } else {
     alert("Penghapusan Gagal");
@@ -83,8 +82,7 @@ document.querySelector(".del-btn").addEventListener("click", function () {
   /*
     DELETE DORAYAKI
   */
-  let id = window.location.hash.split('?')[1];
-
+  var id = window.location.href.split('?')[1];
   deleteDorayaki(
     API_URL + "detail.php",
     deleteCallback,
