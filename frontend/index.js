@@ -4,6 +4,9 @@ let xhr = new XMLHttpRequest();
 
 window.onload = () => {
   setNavbar();
+  if(!getCookie("SessionID")) {
+    window.location.href = "pages/login/"
+  }
   xhr.open("GET", URL_PATH);
   xhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {

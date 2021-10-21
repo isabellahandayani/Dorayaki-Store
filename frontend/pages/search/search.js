@@ -7,6 +7,9 @@ var page = 0;
 
 window.onload = () => {
     setNavbar();
+    if(!getCookie("SessionID")) {
+        window.location.href = "../login/"
+    }
     getDorayaki(null);
     var filter = document.location.pathname.includes('?') 
         ? document.location.pathname.split('?')[-1]

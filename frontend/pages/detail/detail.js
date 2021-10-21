@@ -6,6 +6,9 @@ const defaultImg = "../../assets/images/dorayaki.png";
 window.onload = () => {
   setNavbar();
 
+  if(!getCookie("SessionID")) {
+    window.location.href = "../login/"
+  }
   var id = window.location.href.split('?')[1];
 
   xhr.open("GET", API_URL + `detail-dorayaki.php?id_dorayaki=${id}`);
@@ -31,6 +34,7 @@ const loadData = (data) => {
   document.getElementById('price').innerHTML = `Rp. ${price}`;
   document.getElementById('sold').innerHTML = `${sold_stock} Terjual`;
   document.getElementById('desc').innerHTML = desc;
+  document.title = `Dorayaki ${dorayaki_name}`;
 }
 
 const deleteDorayaki = (url, callback, data) => {

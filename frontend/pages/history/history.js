@@ -1,5 +1,10 @@
+const BASE_URL = "../../../backend/api";
+
 window.onload = () => {
   setNavbar();
+  if(!getCookie("SessionID")) {
+    window.location.href = "../login/"
+  }
 }
 
 
@@ -37,4 +42,4 @@ const historyCallback = (data) => {
   }
 };
 
-getHistory("http://localhost/spidermen-web/backend/api/history.php?getHistory=true", historyCallback);
+getHistory( BASE_URL + "/history.php?getHistory=true", historyCallback);
