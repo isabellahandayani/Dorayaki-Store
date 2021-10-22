@@ -34,18 +34,23 @@
 
         <img
           id="nav-add-item"
-          src="../../assets/icons/plus.svg"
+          src="./assets/icons/plus.svg"
           onclick="goToAddVariant();"
         />
         <div style="width: 20px"></div>
 
-        <div class="bg-white search-bar">
-          <img src="../../assets/icons/bi_search.svg" />
+        <div id="nav-search" class="bg-white search-bar">
+          <img
+            src="./assets/icons/bi_search.svg"
+            onclick="window.searchDorayaki()"
+            style="cursor: pointer"
+          />
           <div style="width: 10px"></div>
           <input id="filter" />
         </div>
       </div>
     </div>
+    
     <div class="container">
       <div class="content">
         <!-- User List of Dorayaki -->
