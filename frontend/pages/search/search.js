@@ -76,7 +76,8 @@ function pagination(n) {
 }
 
 function setBtn(page) {
-    if (page >= Math.floor(dorayakiData.length - 1 / 4)) document.getElementById("next-btn").style.display = 'none'
+
+    if (page >= Math.floor((dorayakiData.length - 1) / 4)) document.getElementById("next-btn").style.display = 'none'
     else document.getElementById("next-btn").style.display = 'block'
 
     if (page == 0) document.getElementById("prev-btn").style.display = 'none'
