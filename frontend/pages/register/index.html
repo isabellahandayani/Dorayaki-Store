@@ -44,15 +44,15 @@
         </div>
         <div class="input-container">
           <p class="body-1">Username</p>
-          <input id="username" type="text"/>
+          <input onchange="checkUsername(event);" id="username" type="text"/>
         </div>
         <div class="input-container">
           <p class="body-1">Password</p>
           <input id="password" type="password"/>
         </div>
-        <div class="submit-button">
-        <input type="submit" class="button bg-dark-red" value="Register"/>
-    </div>
+        <div class="submit-button clickable">
+          <input id="submit" type="submit" class="button bg-dark-red" value="Register"/>
+      </div>
       </form>
       </div>
     </div>
