@@ -31,7 +31,7 @@ function setDashboard(data) {
           <img src="${IMG_PATH + photo}" class="bg-img">
           <div class="desc">
               <h4 class="h4">${dorayaki_name}</h4>
-              <p class="body-1">Rp ${price}</p>
+              <p class="body-1">${formatMoney(price)}</p>
           </div>
       </div>
     `;

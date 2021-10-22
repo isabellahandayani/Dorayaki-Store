@@ -39,7 +39,7 @@ const loadData = (data) => {
     ? IMG_PATH + photo
     : defaultImg;
   document.getElementById("stock").innerHTML = `${stock} Buah`;
-  document.getElementById("price").innerHTML = `Rp. ${price}`;
+  document.getElementById("price").innerHTML = `${formatMoney(price)}`;
   document.getElementById("sold").innerHTML = `${sold_stock} Terjual`;
   document.getElementById("desc").innerHTML = desc;
   document.title = `Dorayaki ${dorayaki_name}`;

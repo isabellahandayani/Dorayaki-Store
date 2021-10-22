@@ -105,7 +105,7 @@ const templateItem = (photo, name, id, price) => {
   <div class="desc">
     <button class="body-2 bg-yellow color-white edit-btn" id="dor-${id}">Edit</button>
     <p class="body-1 color-white">${name}</p>
-    <p class="body-2 color-white">${price}</p>
+    <p class="body-2 color-white">${formatMoney(price)}</p>
   </div>
   `;
 };
@@ -116,7 +116,7 @@ const templateBill = (name, id, qty, price) => {
   */
   return `
   <p class="body-2 color-white">${name}</p>
-  <p class="body-2 color-white item-${id}">${qty}x ${price}</p> 
+  <p class="body-2 color-white item-${id}">${qty}x ${formatMoney(price)}</p> 
   `;
 };
 
@@ -269,7 +269,7 @@ const updateCallback = (data) => {
     console.log(res["qty"]);
     amount.innerText = res["qty"];
     let item = document.getElementsByClassName("item-" + res["id_dorayaki"])[0];
-    item.innerHTML = res["qty"] + `x` + res["price"];
+    item.innerHTML = res["qty"] + `x` + formatMoney(res["price"]);
     deleteCookie(`item-${res["id_dorayaki"]}`);
     setCookie(`item-${res["id_dorayaki"]}`, res["qty"]);
   } else {
@@ -287,7 +287,7 @@ const totalCallback = (data) => {
   for (key in res) {
     sum += res[key]["price"] * Number(getCookie(`item-${key}`));
   }
-  total.innerHTML = sum;
+  total.innerHTML = formatMoney(sum);
 };
 
 const confirmCallback = (data) => {

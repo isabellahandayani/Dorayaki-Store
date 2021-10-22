@@ -55,7 +55,7 @@ function setDorayaki(data) {
             <img src="${IMG_PATH + photo}">
             <div class="info color-white">
                 <div>${dorayaki_name}</div>
-                <div class="price">Rp. ${price}</div>
+                <div class="price">${formatMoney(price)}</div>
             </div>
         </div>
         `

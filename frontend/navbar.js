@@ -29,6 +29,15 @@ window.logout = () => {
   deleteCookie("isAdmin");
 }
 
+const formatMoney = (amount) => {
+  let res = amount < 0 ? "-Rp " : "Rp ";
+  amount = amount < 0 ? amount * -1 : amount;
+
+  return amount != 0
+    ? res + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    : "0";
+}
+
 const deleteCookie = (name) => {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
