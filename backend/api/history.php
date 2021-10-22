@@ -3,7 +3,7 @@
     
     
     if(isset($_GET['getHistory']) && $_GET['getHistory']) {
-        $id_user = $_GET['user_id'];
+        $id_user = $_GET['idUser'];
         $query= <<<EOF
             SELECT id_order, `time`, dorayaki_name, qty, qty*price AS sum, id_dorayaki 
             FROM "order" natural join order_item natural join dorayaki

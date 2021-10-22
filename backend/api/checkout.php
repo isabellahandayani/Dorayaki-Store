@@ -39,11 +39,11 @@ if (isset($_POST['data'])) {
     try {
         $json = $_POST['data'];
         $data = json_decode($json, true);
-        $user_id = $_SESSION['user_id'];
+        $user_id = $_POST['idUser'];
         // Make New Order
         $query = <<<EOF
             INSERT INTO "order" (id_order, `time`, id_user)
-            VALUES(NULL, datetime('now'), '$user_id');
+            VALUES(NULL, datetime('now','localtime'), '$user_id');
             EOF;
         $db->exec($query);
 
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
         parse_str(file_get_contents('php://input'), $_PUT);
         $json = $_PUT['data'];
         $data = json_decode($json, true);
-        $user_id = $_SESSION['user_id'];
+        $user_id = $_POST['idUser'];
 
         $query = <<<EOF
         UPDATE Dorayaki

@@ -6,7 +6,7 @@ window.onload = () => {
     window.location.href = "../login/"
   }
   let user_id = getCookie("sessionID").split("-").at(0);
-  getHistory(BASE_URL + "/history.php?getHistory=true&user_id=" + user_id, historyCallback);
+  getHistory(BASE_URL + "/history.php?getHistory=true&idUser=" + user_id, historyCallback);
 }
 
 

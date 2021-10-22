@@ -30,7 +30,7 @@ const getOrder = () => {
     let x = item.toString().split("=");
     let id = x[0].split("-").at(-1);
     console.log(x[1]);
-    let qty = x[1];
+    let qty = x[1].replace(";","");
     matches[id] = qty;
     deleteCookie(`item-${id}`);
   }
@@ -42,10 +42,12 @@ document.getElementById("submit").onclick = function (event) {
     Submit Order Event
   */
   event.preventDefault();
+
+  let idUser = getCookie('sessionID').split('-')[0];
   postItem(
     BASE_URL + "/checkout.php",
     confirmCallback,
-    "data=" + JSON.stringify(getOrder())
+    `data=${JSON.stringify(getOrder())}&idUser=${idUser}`
   );
 };
 
