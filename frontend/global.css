@@ -199,3 +199,9 @@ input:focus-visible {
   background: rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
+
+@media (max-width: 1200px) {
+  .dashboard {
+    grid-template-columns: auto auto;
+  }
+}
