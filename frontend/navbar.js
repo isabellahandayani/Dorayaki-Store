@@ -52,6 +52,21 @@ function setCookie(name, value) {
 
 const setNavbar = () => {
   const sessionID = getCookie("sessionID");
+  const sessionEnd = getCookie("sessionEnd");
+
+  if (sessionID && sessionEnd){
+    let now = new Date();
+    let endDate = new Date(sessionEnd);
+
+    if (now > endDate){
+      alert("Session Ended! Redirecting to login page...")
+  
+      window.logout();
+  
+      window.location.pathname = "frontend/pages/login/";
+      return;
+    }
+  }
 
   if (!sessionID) {
     document.getElementById("nav-username").style.display = "none";
