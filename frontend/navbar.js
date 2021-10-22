@@ -3,6 +3,14 @@ const getCookie = function (name) {
   if (match) return match[2];
 };
 
+const validateAdmin = () => {
+  return getCookie("isAdmin") === "1";
+}
+
+const goToAddVariant = () => {
+  window.location.pathname = "frontend/pages/add-variant/"
+}
+
 window.getUsername = function () {
   return getCookie("sessionID").split("-").at(-1);
 }
@@ -28,23 +36,29 @@ function setCookie(name, value) {
 
 const setNavbar = () => {
   const sessionID = getCookie("sessionID");
-  console.log("kok rusak", sessionID)
-  
+
   if (!sessionID) {
     document.getElementById("nav-username").style.display = "none";
-    // document.getElementById("nav-cart").style.display = "none";
-    document.getElementById("nav-login-logout-button").innerHTML = 
-      window.location.pathname.includes("login") ? "Register" : "Login";
-    document.getElementById("nav-login-logout-button").onclick = () => {
-      window.location.pathname = 
-      window.location.pathname.includes("login") ? "frontend/pages/register/" : "frontend/pages/login/";
+    document.getElementById("nav-add-item").style.display = "none";
+    document.getElementById("nav-auth-button").innerHTML =
+     window.location.pathname.includes("login") ? "Register" : "Login";
+    document.getElementById("nav-auth-button").onclick = () => {
+      window.location.pathname = window.location.pathname.includes("login") ? "frontend/pages/register/" : "frontend/pages/login/";
     };
   } else {
     document.getElementById("nav-username").innerText = window.getUsername();
-    document.getElementById("nav-login-logout-button").innerHTML = "Logout";
-    document.getElementById("nav-login-logout-button").onclick = () => {
+    document.getElementById("nav-auth-button").innerHTML = "Logout";
+    document.getElementById("nav-auth-button").onclick = () => {
       window.logout();
-      window.location.pathname = "frontend/pages/login/"
+      window.location.pathname = "frontend/pages/login/";
     };
+    document.getElementById("nav-username").onclick = () => {
+      window.location.pathname = "frontend/pages/history/"
+    }
+    document.getElementById("nav-username").style.cursor = "pointer"
+
+    if (!validateAdmin()) {
+      document.getElementById("nav-add-item").style.display = "none";
+    }
   }
 }

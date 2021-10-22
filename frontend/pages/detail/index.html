@@ -23,16 +23,13 @@
         orayaki
       </div>
       <div class="menu">
-        <button
-          class="bg-dark-red color-white"
-          id="nav-login-logout-button"
-        ></button>
+        <button class="bg-dark-red color-white" id="nav-auth-button"></button>
         <div style="width: 20px"></div>
 
         <div id="nav-username"></div>
         <div style="width: 20px"></div>
 
-        <img id="nav-cart" src="../../assets/icons/akar-icons_cart.svg" />
+        <img id="nav-add-item" src="../../assets/icons/plus.svg" />
         <div style="width: 20px"></div>
 
         <div id="nav-search" class="bg-white search-bar">
@@ -61,8 +58,12 @@
             <span>Stok</span>
             <span id="stock">?? Biji</span>
           </div>
-          <button onclick="buyDorayaki(event);" class="bg-dark-red color-white btn">
-              Beli
+          <button
+            id="beli-edit"
+            onclick="buyEditDorayaki(event);"
+            class="bg-dark-red color-white btn"
+          >
+            Beli
           </button>
         </div>
         <div class="desc bg-blue color-white body-1">
@@ -85,7 +86,9 @@
           </div>
           <div style="height: 20px"></div>
           <div id="desc">Loading...</div>
-          <button class="del-btn bg-dark-red color-white">Delete</button>
+          <button id="delete" class="del-btn bg-dark-red color-white">
+            Delete
+          </button>
         </div>
       </div>
     </div>

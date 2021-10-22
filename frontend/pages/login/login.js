@@ -25,7 +25,7 @@ function login(event) {
 
         window.location.href = "../../index.html";
       } else {
-        console.log("Wrong Info");
+        alert("Wrong username or password!!!")
       }
     } else {
       console.log(this)

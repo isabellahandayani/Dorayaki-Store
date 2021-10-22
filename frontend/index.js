@@ -3,26 +3,26 @@ const IMG_PATH = "../../../backend/image/";
 let xhr = new XMLHttpRequest();
 
 window.onload = () => {
-  if(!getCookie("sessionID")) {
-      window.location.href = "pages/login/"
-    }
-    xhr.open("GET", URL_PATH);
-    xhr.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        let res = JSON.parse(this.response);
+  if (!getCookie("sessionID")) {
+    window.location.href = "pages/login/";
+  }
+  xhr.open("GET", URL_PATH);
+  xhr.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      let res = JSON.parse(this.response);
       console.table(res);
       setDashboard(res.slice(0, 9));
     } else {
       console.log(this);
     }
-  }
+  };
   setNavbar();
 
-  xhr.send()
-}
+  xhr.send();
+};
 
 function setDashboard(data) {
-  let html = '';
+  let html = "";
 
   data.forEach(({ id_dorayaki, dorayaki_name, price, photo }) => {
     html += `
@@ -37,7 +37,7 @@ function setDashboard(data) {
     `;
   });
 
-  document.getElementById('dorayaki').innerHTML = html;
+  document.getElementById("dorayaki").innerHTML = html;
 }
 
 function openDetail(id) {

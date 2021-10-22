@@ -95,11 +95,6 @@ const templateModal = (id) => {
   `;
 };
 
-function getCookie(name) {
-  let value = `; ${document.cookie}`.split(`; ${name}=`);
-  if (value.length === 2) return value.pop().split(";").shift();
-}
-
 const templateItem = (photo, name, id, price) => {
   /*
     Cart Item Template
@@ -268,8 +263,9 @@ const updateCallback = (data) => {
   let amount = document.getElementById("amount");
   if (
     Number(res["stock"]) >= Number(res["qty"]) ||
-    getCookie("isAdmin") === "true"
+    getCookie("isAdmin") === "1"
   ) {
+    console.log(res["qty"]);
     amount.innerText = res["qty"];
     let item = document.getElementsByClassName("item-" + res["id_dorayaki"])[0];
     item.innerHTML = res["qty"] + `x` + res["price"];
@@ -319,7 +315,7 @@ const checkAdmin = () => {
   */
   let isAdmin = getCookie("isAdmin");
   let update_btn = document.getElementById("update");
-  if (isAdmin === "true") {
+  if (isAdmin === "1") {
     let trans = document.getElementById("transaction");
     trans.style.display = "none";
   } else {
