@@ -29,7 +29,8 @@ const getOrder = () => {
   for(item of match) {
     let x = item.toString().split("=");
     let id = x[0].split("-").at(-1);
-    let qty = x[1][0];
+    console.log(x[1]);
+    let qty = x[1];
     matches[id] = qty;
     deleteCookie(`item-${id}`);
   }
@@ -322,7 +323,7 @@ const checkAdmin = () => {
     // Short Polling for Price
     setInterval(function () {
       getItem(`${BASE_URL}/checkout.php?getItem=true`, totalCallback);
-    }, 3000);
+    }, 500);
     update_btn.style.display = "none";
   }
   // Populate Cart Item

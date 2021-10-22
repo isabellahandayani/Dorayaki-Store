@@ -17,7 +17,10 @@ window.getUsername = function () {
 
 window.searchDorayaki = () => {
   const name = document.getElementById("filter").value;
-  window.location.href = `pages/search/?name=${name}`
+  // window.location.href = (window.location.href.includes('pages')) 
+  //  (window.location.href.includes('pages')) ? `../search/?name=${name}` : `pages/search/?name=${name}`;
+  window.history.replaceState({}, document.title, "/" + `frontend/pages/search/?name=${name}`);
+  window.location.reload(false); 
 };
 
 window.logout = () => {

@@ -10,12 +10,10 @@ window.onload = () => {
     if(!getCookie("sessionID")) {
         window.location.href = "../login/"
     }
-    getDorayaki(null);
-    var filter = document.location.pathname.includes('?') 
-        ? document.location.pathname.split('?')[-1]
-        : "";
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('name');
 
-    console.log(filter);
+    getDorayaki(filter);
 }
 
 function search() {
