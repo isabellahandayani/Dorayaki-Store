@@ -85,6 +85,8 @@ const setNavbar = () => {
     if (!validateAdmin()) {
       document.getElementById("nav-add-item").style.display = "none";
     }
+    document.getElementById("nav-add-item").className = "plus-btn";
+    document.getElementById("nav-add-item").onclick = goToAddVariant;
 
     if (
       window.location.pathname.includes("checkout") ||
