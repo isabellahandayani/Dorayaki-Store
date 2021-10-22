@@ -53,8 +53,10 @@ Register : 13519xxx
 Dashboard :
 Detail :
 Perubahan Dorayaki/Pembelian Dorayaki:
-(Lanjutkan …)
+
 Client-side
-Login : 13519xxx, 13519xxx
+Login : 13519114, 13519144
 Register : 13519xxx
-(Lanjutkan…)
+Dashboard :
+Detail :
+Perubahan Dorayaki/Pembelian Dorayaki:
