@@ -1,9 +1,9 @@
 <?php
-    $id_user = $_SESSION['user_id'];
     $db = new PDO('sqlite:../data/dorayaki.db');
-
-
+    
+    
     if(isset($_GET['getHistory']) && $_GET['getHistory']) {
+        $id_user = $_GET['user_id'];
         $query= <<<EOF
             SELECT id_order, `time`, dorayaki_name, qty, qty*price AS sum, id_dorayaki 
             FROM "order" natural join order_item natural join dorayaki
