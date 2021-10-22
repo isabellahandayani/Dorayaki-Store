@@ -16,7 +16,7 @@
         SELECT id_dorayaki, dorayaki_name, price, photo
         FROM dorayaki
         $condition
-        ORDER BY sold_stock
+        ORDER BY sold_stock DESC
         EOF;
     
     $results = $db->query($query);
