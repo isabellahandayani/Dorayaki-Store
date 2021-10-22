@@ -77,12 +77,12 @@ const setNavbar = () => {
       window.logout();
       window.location.pathname = "frontend/pages/login/";
     };
-    document.getElementById("nav-username").onclick = () => {
-      window.location.pathname = "frontend/pages/history/";
-    };
-    document.getElementById("nav-username").style.cursor = "pointer";
-
+    
     if (!validateAdmin()) {
+      document.getElementById("nav-username").onclick = () => {
+        window.location.pathname = "frontend/pages/history/"
+      }
+      document.getElementById("nav-username").style.cursor = "pointer"
       document.getElementById("nav-add-item").style.display = "none";
     }
     document.getElementById("nav-add-item").className = "plus-btn";
