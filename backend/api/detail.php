@@ -1,6 +1,5 @@
 <?php
     $db = new PDO('sqlite:../data/dorayaki.db');
-
     // Delete Dorayaki
     if ('DELETE' === $_SERVER['REQUEST_METHOD']) {
         try {
@@ -26,10 +25,8 @@
             // Delete image
             $res = $path->fetch(PDO::FETCH_ASSOC);
             unlink('../image/' . $res['photo']);
-            die(json_encode(array("success" => true)));
+            die(json_encode(array("statusCode" => true)));
         } catch (Exception $e) {
-            die(json_encode(array("success" => false)));
+            die(json_encode(array("statusCode" => false)));
         }
-        die("MASUK");
-
     }

@@ -1,3 +1,14 @@
+const BASE_URL = "../../../backend/api";
+const IMG_PATH = "../../../backend/image/";
+
+window.onload = () => {
+  setNavbar();
+  if(!getCookie("sessionID")) {
+    window.location.href = "../login/"
+  }
+  checkAdmin();
+};
+
 window.onclick = function (event) {
   /*
     Close Modal
@@ -11,11 +22,16 @@ const getOrder = () => {
   /*
     Get order from cookie
   */
-  let regex = /item-.*/g;
+  let value = document.cookie + ";";
+  let regex = /item-.*;/g;
   var matches = {};
-  while ((match = regex.exec(document.cookie))) {
-    let x = match[0].toString().split("=");
-    matches[x[0].split("-").at(-1)] = Number(x[1]);
+  let match = (regex.exec(value))[0].split(" ");
+  for(item of match) {
+    let x = item.toString().split("=");
+    let id = x[0].split("-").at(-1);
+    let qty = x[1][0];
+    matches[id] = qty;
+    deleteCookie(`item-${id}`);
   }
   return matches;
 };
@@ -26,7 +42,7 @@ document.getElementById("submit").onclick = function (event) {
   */
   event.preventDefault();
   postItem(
-    "http://localhost/spidermen-web/backend/api/checkout.php",
+    BASE_URL + "/checkout.php",
     confirmCallback,
     "data=" + JSON.stringify(getOrder())
   );
@@ -38,7 +54,7 @@ document.getElementById("update").onclick = function (event) {
   */
   event.preventDefault();
   putItem(
-    "http://localhost/spidermen-web/backend/api/checkout.php",
+    `${BASE_URL}/checkout.php`,
     confirmCallback,
     "data=" + JSON.stringify(getOrder())
   );
@@ -79,19 +95,6 @@ const templateModal = (id) => {
   `;
 };
 
-// DUMMY COOKIE
-function setCookie(name, value) {
-  document.cookie = `${name}= ${value}; path=/`;
-}
-
-function getCookie(name) {
-  let value = `; ${document.cookie}`.split(`; ${name}=`);
-  if (value.length === 2) return value.pop().split(";").shift();
-}
-
-function deleteCookie(name) {
-  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-}
 const templateItem = (photo, name, id, price) => {
   /*
     Cart Item Template
@@ -127,9 +130,7 @@ const editButtons = () => {
       let amount = parseInt(document.getElementById("amount").innerText);
       amount++;
       getItem(
-        `http://localhost/spidermen-web/backend/api/checkout.php?id=${id
-          .split("-")
-          .at(-1)}&amt=${amount}`,
+        `${BASE_URL}/checkout.php?id=${id.split("-").at(-1)}&amt=${amount}`,
         updateCallback
       );
     },
@@ -144,9 +145,7 @@ const editButtons = () => {
       amount--;
       amount = amount >= 1 ? amount : 1;
       getItem(
-        `http://localhost/spidermen-web/backend/api/checkout.php?id=${id
-          .split("-")
-          .at(-1)}&amt=${amount}`,
+        `${BASE_URL}/checkout.php?id=${id.split("-").at(-1)}&amt=${amount}`,
         updateCallback
       );
     },
@@ -207,6 +206,7 @@ const cartCallback = (data) => {
   
   data : xhr.responseText
   */
+
   let res = JSON.parse(data);
   let list = document.getElementsByClassName("content")[0];
 
@@ -225,7 +225,7 @@ const cartCallback = (data) => {
     list.innerHTML = "";
     bill.innerHTML = "";
     for (const [key, value] of Object.entries(res)) {
-      let photo = "http://localhost/spidermen-web/backend/image/" + res[key]["photo"];
+      let photo = IMG_PATH + res[key]["photo"];
       let item = document.createElement("div");
       item.classList.add("item", "bg-blue");
 
@@ -257,13 +257,15 @@ const cartCallback = (data) => {
 const updateCallback = (data) => {
   /*
     Update Number of Order
-  */ 
- let res = JSON.parse(data);
+  */
+  console.log(data);
+  let res = JSON.parse(data);
   let amount = document.getElementById("amount");
   if (
     Number(res["stock"]) >= Number(res["qty"]) ||
-    getCookie("isAdmin") === "true"
+    getCookie("isAdmin") === "1"
   ) {
+    console.log(res["qty"]);
     amount.innerText = res["qty"];
     let item = document.getElementsByClassName("item-" + res["id_dorayaki"])[0];
     item.innerHTML = res["qty"] + `x` + res["price"];
@@ -277,8 +279,8 @@ const updateCallback = (data) => {
 const totalCallback = (data) => {
   /*
     Update Total Price
-  */ 
- let res = JSON.parse(data);
+  */
+  let res = JSON.parse(data);
   let total = document.getElementById("total");
   let sum = 0;
   for (key in res) {
@@ -290,43 +292,39 @@ const totalCallback = (data) => {
 const confirmCallback = (data) => {
   /*
     Succesful Submit Confirmation
-  */ 
- let res = JSON.parse(data);
+  */
+ console.log(data);
+ console.log(getCookie("isAdmin"));
+  let res = JSON.parse(data);
   if (!res["success"]) {
     alert("Gagal");
   }
-  if (res["success"] && getCookie("isAdmin") === "false") {
+  if (res["success"] && getCookie("isAdmin") == 0) {
     alert("Pembelian Berhasil");
   }
 
-  if (res["success"] && getCookie("isAdmin") === "true") {
+  if (res["success"] && getCookie("isAdmin") == 1) {
     alert("Perubahan Berhasil");
   }
   location.reload();
 };
 
-const checkAdmin = (data) => {
+const checkAdmin = () => {
   /*  
     Check if user is Admin
   */
-  let res = JSON.parse(data);
+  let isAdmin = getCookie("isAdmin");
   let update_btn = document.getElementById("update");
-  console.log(res);
-  if (res["isAdmin"]) {
+  if (isAdmin === "1") {
     let trans = document.getElementById("transaction");
     trans.style.display = "none";
-    setCookie("isAdmin", true);
   } else {
     // Short Polling for Price
     setInterval(function () {
-      getItem("http://localhost/spidermen-web/backend/api/checkout.php?getItem=true", totalCallback);
-      getOrder();
-    }, 50);
+      getItem(`${BASE_URL}/checkout.php?getItem=true`, totalCallback);
+    }, 3000);
     update_btn.style.display = "none";
-    setCookie("isAdmin", false);
   }
   // Populate Cart Item
-  getItem("http://localhost/spidermen-web/backend/api/checkout.php?getItem=true", cartCallback);
+  getItem(`${BASE_URL}/checkout.php?getItem=true`, cartCallback);
 };
-
-postItem("http://localhost/spidermen-web/backend/api/checkout.php", checkAdmin, "checkAdmin=true");

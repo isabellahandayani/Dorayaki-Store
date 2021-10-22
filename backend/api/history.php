@@ -1,6 +1,5 @@
 <?php
-    // Dummy user id 
-    $id_user = 1;
+    $id_user = $_SESSION['user_id'];
     $db = new PDO('sqlite:../data/dorayaki.db');
 
 

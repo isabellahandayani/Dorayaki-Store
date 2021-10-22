@@ -32,6 +32,8 @@
   max-height: 145px;
   max-width: 15%;
   border-radius: 25px 0px 0px 25px;
+  object-fit: fill;
+  width: 150px;
 }
 
 .result-card .info {

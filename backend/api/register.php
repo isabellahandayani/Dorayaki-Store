@@ -28,7 +28,7 @@
 
             $query = <<<EOF
                 INSERT INTO user (email, password, username, is_admin)
-                VALUES ('$email','$pass','$username',$is_admin)
+                VALUES ('$email','$pass','$username', 0)
             EOF;
 
             $result = $db->exec($query);
@@ -41,7 +41,7 @@
                 array(
                     "statusCode" => 200,
                     "sessionID" => $id.'-'.$username,
-                    "isAdmin" => $is_admin,
+                    "isAdmin" => 0,
                     "sessionEnd" => $end_time,
                 )
             ));

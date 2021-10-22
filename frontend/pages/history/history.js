@@ -1,3 +1,14 @@
+const BASE_URL = "../../../backend/api";
+
+window.onload = () => {
+  setNavbar();
+  if (!getCookie("sessionID")) {
+    window.location.href = "../login/"
+  }
+  getHistory(BASE_URL + "/history.php?getHistory=true", historyCallback);
+}
+
+
 const getHistory = (url, callback) => {
   /*
         GET History Data
@@ -14,6 +25,7 @@ const getHistory = (url, callback) => {
 };
 
 const historyCallback = (data) => {
+  console.log(data);
   let res = JSON.parse(data);
   let table = document.getElementById("table");
   for (var key in res) {
@@ -32,4 +44,3 @@ const historyCallback = (data) => {
   }
 };
 
-getHistory("http://localhost/spidermen-web/backend/api/history.php?getHistory=true", historyCallback);
