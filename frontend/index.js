@@ -3,20 +3,20 @@ const IMG_PATH = "../../../backend/image/";
 let xhr = new XMLHttpRequest();
 
 window.onload = () => {
-  setNavbar();
   if(!getCookie("sessionID")) {
-    // window.location.href = "pages/login/"
-  }
-  xhr.open("GET", URL_PATH);
-  xhr.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      let res = JSON.parse(this.response);
+      window.location.href = "pages/login/"
+    }
+    xhr.open("GET", URL_PATH);
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        let res = JSON.parse(this.response);
       console.table(res);
       setDashboard(res.slice(0, 9));
     } else {
       console.log(this);
     }
   }
+  setNavbar();
 
   xhr.send()
 }

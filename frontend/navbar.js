@@ -1,4 +1,4 @@
-window.getCookie = function (name) {
+const getCookie = function (name) {
   var match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
   if (match) return match[2];
 };
@@ -27,7 +27,8 @@ function setCookie(name, value) {
 }
 
 const setNavbar = () => {
-  const sessionID = window.getCookie("sessionID");
+  const sessionID = getCookie("sessionID");
+  console.log("kok rusak", sessionID)
   
   if (!sessionID) {
     document.getElementById("nav-username").style.display = "none";
