@@ -27,8 +27,8 @@
             $is_admin = $_POST['is_admin'];
 
             $query = <<<EOF
-                INSERT INTO user (email, password, username)
-                VALUES ('$email','$pass','$username')
+                INSERT INTO user (email, password, username, is_admin)
+                VALUES ('$email','$pass','$username', 1)
             EOF;
 
             $result = $db->exec($query);
@@ -41,7 +41,7 @@
                 array(
                     "statusCode" => 200,
                     "sessionID" => $id.'-'.$username,
-                    "isAdmin" => 0,
+                    "isAdmin" => 1,
                     "sessionEnd" => $end_time,
                 )
             ));
