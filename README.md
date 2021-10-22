@@ -28,7 +28,7 @@ Doraemon sebentar lagi akan berpisah dengan dorayaki, inilah kata-kata dan karya
   ` PHP -S localhost:5000`
   Jalankan perintah di atas di directory spidermen-web.
   Voila!
-  Buka `http://localhost:3000/frontend/`
+  Buka `http://localhost:5000/frontend/`
   <br/>
 - Dengan Menggunakan XAMPP
 
@@ -39,24 +39,27 @@ Doraemon sebentar lagi akan berpisah dengan dorayaki, inilah kata-kata dan karya
 
 ### Halaman <i>Register</i>
 ![Register Page](./screenshots/register.png)
+
 ### Halaman <i>Dashboard</i>
 ![Dashboard Page](./screenshots/dashboard.png)
+
 ### Halaman <i>Detail Dorayaki</i>
 ![Detail Page](./screenshots/detail.png)
+
 ### Halaman Hasil!
 ![Pembelian](./screenshots/pembelian.png)
-## Penjelasan mengenai pembagian tugas masing-masing anggota (lihat
 
-formatnya pada bagian pembagian tugas).Server-side
+## Penjelasan mengenai pembagian tugas masing-masing anggota
+Server-side
 Login : 13519114, 13519144
-Register : 13519xxx
-Dashboard :
-Detail :
-Perubahan Dorayaki/Pembelian Dorayaki:
+Register : 13519114, 13519144
+Dashboard : 13519144
+Detail : 13519144
+Perubahan Dorayaki/Pembelian Dorayaki: 13519081
 
 Client-side
 Login : 13519114, 13519144
-Register : 13519xxx
-Dashboard :
-Detail :
-Perubahan Dorayaki/Pembelian Dorayaki:
+Register : 13519114, 13519144
+Dashboard : 13519144
+Detail : 13519144
+Perubahan Dorayaki/Pembelian Dorayaki: 13519081
