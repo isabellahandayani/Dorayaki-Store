@@ -222,4 +222,8 @@ h4 {
   .search-bar {
     width: 100px;
   }
+
+  .dashboard {
+    grid-template-columns: auto auto;
+  }
 }
