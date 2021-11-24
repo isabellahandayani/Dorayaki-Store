@@ -1,0 +1,32 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 100px;
+  margin-top: 50px;
+}
+
+.space {
+  height: 20px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table td, .table th {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.table tr:nth-child(even){background-color: #f2f2f2;}
+
+.table tr:hover {background-color: #ddd;}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f39a64;
+  color: white;
+}

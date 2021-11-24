@@ -1,0 +1,80 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../global.css" rel="stylesheet" />
+    <link href="./request.css" rel="stylesheet" />
+    <title>Daftar Request</title>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="navbar color-white bg-blue body-1">
+      <div
+        id="nav-home-button"
+        class="title clickable"
+        onclick="window.location.pathname='frontend/';"
+      >
+        <span class="heading-3">S</span>
+        tand
+        <span class="heading-3">B</span>
+        y
+        <span class="heading-3">D</span>
+        orayaki
+      </div>
+      <div class="menu">
+        <button class="bg-dark-red color-white" id="nav-auth-button"></button>
+        <div style="width: 20px"></div>
+
+        <div id="nav-username"></div>
+        <div style="width: 20px"></div>
+
+        <img
+          id="nav-add-item"
+          src="../../assets/icons/plus.svg"
+          onclick="goToAddVariant();"
+        />
+        <div style="width: 20px"></div>
+
+        <div id="nav-search" class="bg-white search-bar">
+          <img
+            src="../../assets/icons/bi_search.svg"
+            onclick="window.searchDorayaki()"
+            style="cursor: pointer"
+          />
+          <div style="width: 10px"></div>
+          <input id="filter" />
+        </div>
+      </div>
+    </div>
+    <!-- CONTENT -->
+    <div class="body body-1">
+      <p class="body-2">Daftar Request:</p>
+
+      <!-- Results -->
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Dorayaki</th>
+              <th>Tanggal Request</th>
+              <th>Tanggal Diterima</th>
+              <th>Jumlah</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="requests">
+            <!-- <tr>
+              <td>2 Januari 2022</td>
+              <td>3 Januari 2022</td>
+              <td>1</td>
+              <td>Accepted</td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="../../navbar.js"></script>
+    <script src="request.js"></script>
+  </body>
+</html>
