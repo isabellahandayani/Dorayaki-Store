@@ -28,9 +28,23 @@ const dorayakiCallback = (data) => {
   let res = JSON.parse(data);
   let name = document.getElementById("nama");
   let dorayaki = "";
-  for (var x of res.return) {
-	dorayaki += `<option>${x.name}</option>`
+  try {
+    for (var x of res.return) {
+      dorayaki += `<option ${x.id}>${x.name}</option>`;
+    }
+  } catch (e) {
+    try {
+      dorayaki += `<option ${res.return.id}>${res.return.name}</option>`;
+    } catch (e) {
+      alert("Rate Limit Reached");
+	  window.location.pathname = "frontend/";
+      return;
+    }
   }
-  console.log(dorayaki);
-  name.innerHTML = dorayaki;
+
+  if (dorayaki.length == 0) {
+    alert("No Dorayaki Found");
+  } else {
+    name.innerHTML = dorayaki;
+  }
 };
