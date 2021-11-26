@@ -45,7 +45,6 @@ const getDorayakiName = (id, cell) => {
     if (this.readyState === 4 && this.status === 200) {
       let response = JSON.parse(this.response);
       if (response.statusCode === 200) {
-        console.log(response.data);
         cell.innerHTML = response.data.dorayaki_name;
       }
     } else {
@@ -66,7 +65,6 @@ const setRequestTable = (data) => {
   } catch(e) {
     data = [data]
   }
-
 
   data.filter((val) => { 
     return val.status === 'not validated' || (val.status === 'accepted' && (new Date(val.createdAt)).getTime() > date.getTime());
@@ -122,8 +120,9 @@ const restock = () => {
   xhr.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       let response = JSON.parse(this.response);
-      if (response.statusCode === 200) {
-        console.log(response);
+      console.log(response);
+      if (response.success) {
+        alert("Stok Dorayaki Berhasil Ditambah");
       }
     }
   }

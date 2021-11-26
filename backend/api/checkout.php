@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 
         $query = <<<EOF
         UPDATE Dorayaki
-        SET stock = ?
+        SET stock = ?, update_at=strftime('%Y-%m-%d %H:%M:%S','now')
         WHERE id_dorayaki = ?;
         EOF;
 

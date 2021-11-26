@@ -67,12 +67,10 @@
           </button>
           <form method="POST" action="../../../backend/api/make-request.php">
               <input hidden name="id_dorayaki" id="id_dorayaki" />
-              <input style="display: none;" name="stok_added" id="stok_added" type="number"/>
-              <input
-                type="submit"
+              <input style="display: none; font-size: 28px;text-align: center;margin-left: 60px; margin-bottom: 0;" name="stok_added" id="stok_added" type="number" min="1" placeholder="1"/>
+              <button
                 id="request"
-                class="bg-dark-red color-white btn"
-                value="Request" />
+                class="bg-dark-red color-white btn" style="margin-top: 20px">Request</button>
           </form>
         </div>
         <div class="desc bg-blue color-white body-1">
