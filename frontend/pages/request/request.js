@@ -97,7 +97,7 @@ const restock = () => {
     newStock[val.idDorayaki] = val.stokAdded;
   });
 
-  xhr.open('PUT', '../../../backend/api/stock.php');
+  xhr.open('PUT', '../../../backend/api/checkout.php');
   xhr.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       let response = JSON.parse(this.response);
