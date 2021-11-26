@@ -23,13 +23,14 @@ try {
 		if ($res) {
 			echo "<script>alert('Varian Sudah Ada!');window.location.href='../../frontend/pages/add-variant/'</script>";
 		} else {
+			$name = $_POST['nama']; 
+			$arr = explode("-",$name);
 			// Save Image
 			$name = basename($_FILES['image']['name']);
 			$upload_file = '../image/' . $name;
 
 			move_uploaded_file($_FILES['image']['tmp_name'], $upload_file);
 
-			$nama = $_POST['nama'];
 			// $stok = $_POST['stok'];
 			$harga = $_POST['harga'];
 			$desc = $_POST['desc'];
@@ -37,7 +38,7 @@ try {
 			// Insert
 			$query = <<<EOF
                 INSERT INTO dorayaki(id_dorayaki, dorayaki_name, stock, sold_stock, price, desc, photo)
-                VALUES(NULL, '$nama', 0, 0, $harga, '$desc', '$name');
+                VALUES('$arr[0]', '$$arr[1]', 0, 0, $harga, '$desc', '$name');
                 EOF;
 			$db->exec($query);
 
