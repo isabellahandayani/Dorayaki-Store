@@ -25,10 +25,10 @@ Doraemon sebentar lagi akan berpisah dengan dorayaki, inilah kata-kata dan karya
 ## Cara menjalankan server
 
 - Dengan Menggunakan PHP Server
-  ` PHP -S localhost:5000`
+  ` PHP -S localhost:7000`
   Jalankan perintah di atas di directory spidermen-web.
   Voila!
-  Buka `http://localhost:5000/frontend/`
+  Buka `http://localhost:7000/frontend/`
   <br/>
 - Dengan Menggunakan XAMPP
 
@@ -49,17 +49,29 @@ Doraemon sebentar lagi akan berpisah dengan dorayaki, inilah kata-kata dan karya
 ### Halaman Hasil!
 ![Pembelian](./screenshots/pembelian.png)
 
+### Halaman Penambahan Dorayaki
+![image](https://user-images.githubusercontent.com/63598464/144100527-1d605b2f-51fb-4ba3-92d4-6fb583126708.png)
+
+
+### Halaman Request
+![image](https://user-images.githubusercontent.com/63598464/144100434-194d41c4-396e-4ad6-b76a-95a5b68f8428.png)
+
+
 ## Penjelasan mengenai pembagian tugas masing-masing anggota
 Server-side
 Login : 13519114, 13519144
 Register : 13519114, 13519144
 Dashboard : 13519144
-Detail : 13519144
+Detail : 13519144, 13519114
+Penambahan varian Dorayaki: 13519081
 Perubahan Dorayaki/Pembelian Dorayaki: 13519081
+Request Dorayaki: 13519144, 13519114
 
 Client-side
 Login : 13519114, 13519144
 Register : 13519114, 13519144
 Dashboard : 13519144
-Detail : 13519144
+Detail : 13519144, 13519114
+Penambahan varian Dorayaki: 13519081
 Perubahan Dorayaki/Pembelian Dorayaki: 13519081
+Request Dorayaki: 13519144, 13519114

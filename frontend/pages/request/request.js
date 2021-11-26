@@ -59,8 +59,16 @@ const getDorayakiName = (id, cell) => {
 const setRequestTable = (data) => {
   let requestsBody = document.getElementById('requests');
   let date = new Date(lastUpdate);
+  try {
+    data.filter((val) => {
+      console.log(val);
+    })
+  } catch(e) {
+    data = [data]
+  }
 
-  data.filter((val) => {
+
+  data.filter((val) => { 
     return val.status === 'not validated' || (val.status === 'accepted' && (new Date(val.createdAt)).getTime() > date.getTime());
   }).forEach((request) => {
     let row = document.createElement('tr');
@@ -91,17 +99,24 @@ const setRequestTable = (data) => {
 
 const restock = () => {
   date = new Date(lastUpdate);
-  console.log(date);
+
+
+  try {
+    requestData.filter((val) => {
+      console.log(val);
+    })
+    data = requestData;
+  } catch(e) {
+    data = [requestData]
+  }
 
   let newStock = {};
 
-  requestData.filter((val) => {
+  data.filter((val) => {
     return val.status === 'accepted' && (new Date(val.createdAt)).getTime() > date.getTime(); 
   }).forEach((val) => {
     newStock[val.idDorayaki] = newStock[val.idDorayaki] ? newStock[val.idDorayaki]+val.stokAdded : val.stokAdded;
   });
-
-  console.log(newStock);
 
   xhr.open('PUT', '../../../backend/api/checkout.php');
   xhr.onreadystatechange = function () {

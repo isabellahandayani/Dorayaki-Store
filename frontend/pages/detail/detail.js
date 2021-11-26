@@ -14,6 +14,7 @@ window.onload = () => {
 
   if (!validateAdmin()) {
     document.getElementById("delete").style.display = "none";
+    document.getElementById("request").style.display = "none";
   } else {
     document.getElementById("beli-edit").style.display = "none";
     document.getElementById("stok_added").style.display = "block";

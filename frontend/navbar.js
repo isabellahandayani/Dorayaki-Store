@@ -97,9 +97,13 @@ const setNavbar = () => {
       document.getElementById("nav-username").onclick = () => {
         window.location.pathname = "frontend/pages/history/"
       }
-      document.getElementById("nav-username").style.cursor = "pointer"
       document.getElementById("nav-add-item").style.display = "none";
+    } else {
+      document.getElementById("nav-username").onclick = () => {
+        window.location.pathname = "frontend/pages/request/"
+      }
     }
+    document.getElementById("nav-username").style.cursor = "pointer"
     document.getElementById("nav-add-item").className = "plus-btn";
     document.getElementById("nav-add-item").onclick = goToAddVariant;
 

@@ -30,11 +30,11 @@ const dorayakiCallback = (data) => {
   let dorayaki = "";
   try {
     for (var x of res.return) {
-      dorayaki += `<option id="${x.id}" name="option-${x.name}" value="${x.id}-${x.name}">${x.name}</option>`;
+      dorayaki += `<option id="${x.id}" name="${x.id}-${x.name}" value="${x.id}-${x.name}">${x.name}</option>`;
     }
   } catch (e) {
     try {
-      dorayaki += `<option id="${res.return.id}" name="id-${x.name}">${res.return.name}</option>`;
+      dorayaki += `<option id="${res.return.id}" name="${res.return.id}-${res.return.name}" value="${res.return.id}-${res.return.name}">${res.return.name}</option>`;
     } catch (e) {
       alert("Rate Limit Reached");
 	  window.location.pathname = "frontend/";

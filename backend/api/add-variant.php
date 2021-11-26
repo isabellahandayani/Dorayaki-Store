@@ -16,15 +16,17 @@ try {
 		FROM dorayaki where dorayaki_name = ?
 		EOF;
 
+		$name = $_POST['nama']; 
+		$arr = explode("-",$name);
+
 		$check = $db->prepare($query);
-		$check->execute(array($_POST['nama']));
+		$check->execute(array($arr[1]));
 
 		$res = $check->fetch(PDO::FETCH_ASSOC);
-		if ($res) {
+		if ($res != 0) {
 			echo "<script>alert('Varian Sudah Ada!');window.location.href='../../frontend/pages/add-variant/'</script>";
 		} else {
-			$name = $_POST['nama']; 
-			$arr = explode("-",$name);
+
 			// Save Image
 			$name = basename($_FILES['image']['name']);
 			$upload_file = '../image/' . $name;

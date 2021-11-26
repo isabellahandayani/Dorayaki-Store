@@ -5,7 +5,6 @@ $client = new SoapClient("http://localhost:1111/request?wsdl");
 
 // Invoke WS method (Function1) with the request params 
 $response = $client->__soapCall("getRequests", array());
-
 $db = new PDO('sqlite:../data/dorayaki.db');
 
 $query = <<<EOF
