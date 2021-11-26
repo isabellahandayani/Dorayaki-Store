@@ -56,7 +56,9 @@ const getDorayakiName = (id, cell) => {
 const setRequestTable = (data) => {
   let requestsBody = document.getElementById('requests');
 
-  data.forEach((request) => {
+  data.filter((val) => {
+    return val.status === 'not validated' || (val.status === 'accepted' && (new Date(val.createdAt)).getTime() > date.getTime());
+  }).forEach((request) => {
     let row = document.createElement('tr');
 
     let dorayaki = document.createElement('td');
