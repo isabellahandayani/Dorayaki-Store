@@ -2,6 +2,7 @@ let xhr = new XMLHttpRequest();
 const API_URL = "../../../backend/api/";
 const IMG_PATH = "../../../backend/image/";
 const defaultImg = "../../assets/images/dorayaki.png";
+var id;
 
 window.onload = () => {
   setNavbar();
@@ -13,9 +14,10 @@ window.onload = () => {
   if (!validateAdmin()) {
     document.getElementById("delete").style.display = "none";
   } else {
-    document.getElementById("beli-edit").innerHTML = "Edit";
+    document.getElementById("beli-edit").style.display = "none";
+    document.getElementById("stok_added").style.display = "block";
   }
-  var id = window.location.href.split("?")[1];
+  id = window.location.href.split("?")[1];
 
   xhr.open("GET", API_URL + `detail-dorayaki.php?id_dorayaki=${id}`);
   xhr.onreadystatechange = function () {

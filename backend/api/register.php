@@ -38,7 +38,7 @@
                 array(
                     "statusCode" => 200,
                     "sessionID" => $id.'-'.$username,
-                    "isAdmin" => 0,
+                    "isAdmin" => 1,
                     "sessionEnd" => $end_time,
                 )
             ));

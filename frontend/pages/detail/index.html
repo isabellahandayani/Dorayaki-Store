@@ -65,6 +65,16 @@
           >
             Beli
           </button>
+          <form method="POST" action="../../../backend/api/make-request.php">
+              <input hidden name="id_dorayaki" id="id_dorayaki" />
+              <input style="display: none;" name="stok_added" id="stok_added" type="number"/>
+              <input
+                type="submit"
+                id="beli-edit"
+                onclick="(event) => "
+                class="bg-dark-red color-white btn"
+                value="Request" />
+          </form>
         </div>
         <div class="desc bg-blue color-white body-1">
           <div style="display: flex; flex-direction: row">
