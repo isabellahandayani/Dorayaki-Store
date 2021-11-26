@@ -50,10 +50,18 @@ textarea {
 
 input[type="text"],
 textarea,
-input[type="number"] {
+input[type="number"], select {
   padding-left: 10px;
   width: -moz-available;
   width: -webkit-fill-available;
+}
+
+select {
+	margin-bottom: 10px;
+	border-radius: 20px;
+	border: none;
+	outline: none;
+	height: 50px;
 }
 
 .desc {

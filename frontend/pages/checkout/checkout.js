@@ -296,8 +296,6 @@ const confirmCallback = (data) => {
   /*
     Succesful Submit Confirmation
   */
- console.log(data);
- console.log(getCookie("isAdmin"));
   let res = JSON.parse(data);
   if (!res["success"]) {
     alert("Gagal");
