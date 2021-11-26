@@ -5,8 +5,16 @@
   margin-top: 50px;
 }
 
-.space {
-  height: 20px;
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.stok-btn {
+  padding: 8px 5px;
+  height: fit-content;
 }
 
 .table {
