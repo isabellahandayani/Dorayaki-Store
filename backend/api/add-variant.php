@@ -38,7 +38,7 @@ try {
 			// Insert
 			$query = <<<EOF
                 INSERT INTO dorayaki(id_dorayaki, dorayaki_name, stock, sold_stock, price, desc, photo)
-                VALUES('$arr[0]', '$$arr[1]', 0, 0, $harga, '$desc', '$name');
+                VALUES('$arr[0]', '$arr[1]', 0, 0, $harga, '$desc', '$name');
                 EOF;
 			$db->exec($query);
 
