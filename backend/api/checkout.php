@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
         parse_str(file_get_contents('php://input'), $_PUT);
         $json = $_PUT['data'];
         $data = json_decode($json, true);
-        $user_id = $_POST['idUser'];
+        // $user_id = $_POST['idUser'];
 
         $query = <<<EOF
         UPDATE Dorayaki

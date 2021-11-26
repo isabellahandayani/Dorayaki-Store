@@ -10,14 +10,15 @@ window.onload = () => {
   if (!getCookie("sessionID")) {
     window.location.href = "../login/";
   }
+  id = window.location.href.split("?")[1];
 
   if (!validateAdmin()) {
     document.getElementById("delete").style.display = "none";
   } else {
     document.getElementById("beli-edit").style.display = "none";
     document.getElementById("stok_added").style.display = "block";
+    document.getElementById("id_dorayaki").value = id;
   }
-  id = window.location.href.split("?")[1];
 
   xhr.open("GET", API_URL + `detail-dorayaki.php?id_dorayaki=${id}`);
   xhr.onreadystatechange = function () {

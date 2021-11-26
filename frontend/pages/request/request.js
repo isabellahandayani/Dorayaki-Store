@@ -23,6 +23,8 @@ const getRequests = () => {
       if (response.statusCode === 200) {
         requestData = response.data;
         lastUpdate = response.lastUpdate;
+
+        console.log(response.data);
         
         document.getElementById('last-update').innerHTML = "Last Updated: " + lastUpdate;
         setRequestTable(requestData);
@@ -43,6 +45,7 @@ const getDorayakiName = (id, cell) => {
     if (this.readyState === 4 && this.status === 200) {
       let response = JSON.parse(this.response);
       if (response.statusCode === 200) {
+        console.log(response.data);
         cell.innerHTML = response.data.dorayaki_name;
       }
     } else {
@@ -55,6 +58,7 @@ const getDorayakiName = (id, cell) => {
 
 const setRequestTable = (data) => {
   let requestsBody = document.getElementById('requests');
+  let date = new Date(lastUpdate);
 
   data.filter((val) => {
     return val.status === 'not validated' || (val.status === 'accepted' && (new Date(val.createdAt)).getTime() > date.getTime());
@@ -94,8 +98,10 @@ const restock = () => {
   requestData.filter((val) => {
     return val.status === 'accepted' && (new Date(val.createdAt)).getTime() > date.getTime(); 
   }).forEach((val) => {
-    newStock[val.idDorayaki] = val.stokAdded;
+    newStock[val.idDorayaki] = newStock[val.idDorayaki] ? newStock[val.idDorayaki]+val.stokAdded : val.stokAdded;
   });
+
+  console.log(newStock);
 
   xhr.open('PUT', '../../../backend/api/checkout.php');
   xhr.onreadystatechange = function () {
@@ -107,5 +113,5 @@ const restock = () => {
     }
   }
 
-  newStock && xhr.send(JSON.stringify(newStock));
+  newStock && xhr.send("data=" + JSON.stringify(newStock));
 }
