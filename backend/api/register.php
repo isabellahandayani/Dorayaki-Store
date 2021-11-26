@@ -23,9 +23,6 @@
             $encryption_iv = '1234567891011121';
             $pass = openssl_encrypt($_POST['password'], $ciphering, $ecrpytion_key, $options, $encryption_iv);
 
-            // Session Time
-            $is_admin = $_POST['is_admin'];
-
             $query = <<<EOF
                 INSERT INTO user (email, password, username, is_admin)
                 VALUES ('$email','$pass','$username', 0)
