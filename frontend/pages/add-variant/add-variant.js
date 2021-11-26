@@ -25,10 +25,8 @@ const getDorayakis = (url, callback) => {
 };
 
 const dorayakiCallback = (data) => {
-  console.log(data);
   let res = JSON.parse(data);
   let name = document.getElementById("nama");
-  console.log(res);
   let dorayaki = "";
   for (var x of res.return) {
 	dorayaki += `<option>${x.name}</option>`

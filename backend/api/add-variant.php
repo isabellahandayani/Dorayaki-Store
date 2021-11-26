@@ -10,17 +10,16 @@ try {
 	}
 
     if (isset($_POST['nama'])) {
-        $check = $db->query('select dorayaki_name from dorayaki;');
-
         // Check if Dorayaki Exists
-        $found = false;
-        while ($res = $check->fetch(SQLITE3_ASSOC)) {
-            if (!strcmp($res['dorayaki_name'], $_POST['nama'])) {
-                $found = true;
-            }
-        }
+		$query = <<<EOF
+		SELECT dorayaki_name 
+		FROM dorayaki where dorayaki_name = ?
+		EOF;
 
-        if ($found) {
+        $check = $db->prepare($query);
+		$count = $check->execute(array($_POST['nama']));
+
+        if ($count) {
             echo "<script>alert('Varian Sudah Ada!');window.location.href='../../frontend/pages/add-variant/'</script>";
         } else {
             // Save Image
